@@ -7,6 +7,7 @@ import {
   WorldIllustration,
 } from "@/components/world-illustration";
 import { natureGames, wasteBins } from "@/data/nature-games";
+import { parkCharacters } from "@/data/park-game";
 import { useApp } from "@/hooks/use-app";
 import { AppShell } from "@/layouts/app-shell";
 
@@ -74,13 +75,18 @@ export function NaturePage() {
             )}
           </p>
         </div>
-        <span className="nature-game-count">2 {t("ta o‘yin", "игры")}</span>
+        <span className="nature-game-count">
+          {natureGames.length} {t("ta o‘yin", "игры")}
+        </span>
       </div>
       <div className="nature-game-grid">
         {natureGames.map((game) => {
           const completed = progress.completedGames.includes(game.id);
           return (
-            <article className={`nature-game-card ${game.color}`} key={game.id}>
+            <article
+              className={`nature-game-card ${game.color} ${game.id === "park" ? "nature-featured-game" : ""}`}
+              key={game.id}
+            >
               <div className="nature-card-meta">
                 <span>
                   <Leaf size={15} /> {t("TABIAT O‘YINI", "ИГРА О ПРИРОДЕ")}
@@ -100,7 +106,17 @@ export function NaturePage() {
                 className={`nature-card-art nature-card-art-${game.id}`}
                 aria-hidden="true"
               >
-                {game.id === "sort" ? (
+                {game.id === "park" ? (
+                  <div className="park-card-preview">
+                    {parkCharacters.map((hero) => (
+                      <span
+                        key={hero.id}
+                        className="park-sprite"
+                        style={{ backgroundPosition: hero.position }}
+                      />
+                    ))}
+                  </div>
+                ) : game.id === "sort" ? (
                   <div className="mini-bin-row">
                     {wasteBins.map((bin) => (
                       <span className={`mini-bin ${bin.id}`} key={bin.id}>

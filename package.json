@@ -13,7 +13,7 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test tests/progress.test.mjs"
+    "test": "node --experimental-strip-types --test tests/progress.test.mjs tests/park-game.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

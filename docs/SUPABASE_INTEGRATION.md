@@ -19,6 +19,7 @@ The UI runs entirely on local mock data. No Supabase client, account, database, 
 5. Implement parent auth with server-aware sessions. Children use parent-owned profiles rather than separate email accounts. Replace the visibly labeled demo forms with real validation, recovery and confirmation flows.
 6. Implement the service contracts and replace `learningRepository` with the Supabase adapter. Fetch content through `ContentService` and pass domain objects to the existing card, reader and quiz components.
 7. Award points through a server transaction or database function: one reward per completed book, only score improvement for quiz replays, and one five-point reward per completed nature game. Derive score from stored question answers; validate ownership and book/quiz/game IDs. For nature games, validate the action list against the game catalog before recording completion. Use a uniqueness constraint for reward-event idempotency.
+   The `park` game requires all twelve catalog items to be both collected and delivered; validate collect proximity and bin proximity for deliveries using authoritative round state. Its 120 round points are separate from the five-point profile award. The `NatureGameAction` contract includes batch delivery actions for the future adapter; no network call is currently made.
 8. Add loading and failure recovery for remote operations, then test ownership isolation and concurrent award requests.
 9. Replace locally computed streaks with calendar-day reading events in the child's selected timezone.
 

@@ -52,7 +52,7 @@ export interface Quiz {
   questions: Question[];
 }
 export interface NatureGame {
-  id: "sort" | "garden";
+  id: "sort" | "garden" | "park";
   title: Localized;
   description: Localized;
   color: string;
@@ -60,6 +60,7 @@ export interface NatureGame {
 }
 export type NatureGameAction =
   | { itemId: string; action: "collect" }
+  | { itemIds: string[]; action: "deliver" }
   | {
       itemId: string;
       action: "sort";

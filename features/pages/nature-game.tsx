@@ -12,6 +12,7 @@ import {
 } from "@/data/nature-games";
 import { useApp } from "@/hooks/use-app";
 import { AppShell } from "@/layouts/app-shell";
+import { ParkAdventure } from "@/features/park-adventure";
 
 function SortingGame({ onFinish }: { onFinish: () => void }) {
   const { preferences, t } = useApp();
@@ -257,12 +258,14 @@ export function NatureGamePage({ gameId }: { gameId: string }) {
     );
   return (
     <AppShell>
-      <PageHeading
-        back="/nature"
-        eyebrow={t("TABIATNI TOZALA", "БЕРЕГИ ПРИРОДУ")}
-        title={game.title[preferences.language]}
-        description={game.description[preferences.language]}
-      />
+      <div className={game.id === "park" ? "park-page-heading" : undefined}>
+        <PageHeading
+          back="/nature"
+          eyebrow={t("TABIATNI TOZALA", "БЕРЕГИ ПРИРОДУ")}
+          title={game.title[preferences.language]}
+          description={game.description[preferences.language]}
+        />
+      </div>
       {!ready ? (
         <p role="status">{t("O‘yin tayyorlanmoqda…", "Готовим игру…")}</p>
       ) : finished ? (
@@ -276,15 +279,20 @@ export function NatureGamePage({ gameId }: { gameId: string }) {
           </span>
           <h2>{t("Barakalla, tabiat do‘sti!", "Молодец, друг природы!")}</h2>
           <p>
-            {game.id === "sort"
+            {game.id === "park"
               ? t(
-                  "6 ta chiqindini to‘g‘ri saralading. Yer sayyoramiz senga rahmat aytadi!",
-                  "Ты правильно рассортировал 6 предметов. Наша планета говорит тебе спасибо!",
+                  "12 ta chiqindini yig‘ib, qutiga topshirding! Bog‘ yana toza. O‘yinda 120 ochko yig‘ding.",
+                  "Ты собрал и сдал 12 предметов! Парк снова чистый. В игре набрано 120 очков.",
                 )
-              : t(
-                  "Bog‘dagi 8 ta chiqindini yig‘ding. Endi bu yer gullar va kapalaklar uchun yanada chiroyli!",
-                  "Ты собрал 8 предметов мусора. Теперь парк стал ещё красивее для цветов и бабочек!",
-                )}
+              : game.id === "sort"
+                ? t(
+                    "6 ta chiqindini to‘g‘ri saralading. Yer sayyoramiz senga rahmat aytadi!",
+                    "Ты правильно рассортировал 6 предметов. Наша планета говорит тебе спасибо!",
+                  )
+                : t(
+                    "Bog‘dagi 8 ta chiqindini yig‘ding. Endi bu yer gullar va kapalaklar uchun yanada chiroyli!",
+                    "Ты собрал 8 предметов мусора. Теперь парк стал ещё красивее для цветов и бабочек!",
+                  )}
           </p>
           <span className="nature-earned">
             <Star size={23} />
@@ -316,6 +324,8 @@ export function NatureGamePage({ gameId }: { gameId: string }) {
             {t("Daraxtimni ko‘rish", "Моё дерево")}
           </Link>
         </section>
+      ) : game.id === "park" ? (
+        <ParkAdventure key={round} onFinish={finish} />
       ) : game.id === "sort" ? (
         <SortingGame key={round} onFinish={finish} />
       ) : (

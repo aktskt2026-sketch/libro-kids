@@ -2,6 +2,16 @@ import type { Localized, NatureGame } from "@/types";
 
 export const natureGames: NatureGame[] = [
   {
+    id: "park",
+    title: { uz: "Bog‘ qahramonlari", ru: "Герои парка" },
+    description: {
+      uz: "Qahramoningni tanla, bog‘da yurib chiqindilarni yig‘ va qutiga topshir!",
+      ru: "Выбери героя, собери мусор в парке и отнеси его в контейнер!",
+    },
+    color: "sky",
+    reward: 5,
+  },
+  {
     id: "sort",
     title: { uz: "Chiqindini sarala", ru: "Сортируй отходы" },
     description: {

@@ -1,0 +1,23 @@
+{
+  "method": "Built-in image_gen__imagegen, one generation per asset, no retries or variants",
+  "assets": [
+    {
+      "filename": "park-terrain.png",
+      "requestedSize": "1024x1024",
+      "actualSize": "1254x1254",
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept\nAsset type: square 1024x1024 mobile game ground terrain bitmap for a children's park cleanup movement game.\nPrimary request: a bright friendly park ground tile filling the entire square, viewed from a fixed directly overhead orthographic camera.\nScene/backdrop: softly shaded green checker grass. A golden winding footpath enters at the bottom-left, curves up along the upper-left area, and exits at the upper-right. Rounded low-poly trees stand only at the outer edges. Tiny flowers and pebble clusters are confined to the outer edges.\nComposition/framing: useful playable game ground covers the full square, no inset card or diorama. Keep the middle and right 70 percent spacious clear walkable grass, with no obstacles. Trees and decoration may frame the boundary lightly but must not crowd the center.\nStyle/medium: clean polished softly shaded 2.5D casual children's game art, rounded toy-like low-poly shapes, not pixel art.\nLighting/mood: cheerful daytime with soft compact local shadows only.\nConstraints: opaque square canvas; camera directly overhead and orthographic; no text, no UI, no people or animals, no waste, no bins, no border, no vignette, no shadow border. The terrain reaches all four image edges.",
+      "original": "C:/Users/intel/.codex/generated_images/01a11a33-6224-7712-a00a-a68082946862/exec-089f7167-dbd0-4165-ae70-2cda51212759.png"
+    },
+    {
+      "filename": "character-atlas.png",
+      "requestedSize": "1024x1024",
+      "actualSize": "1254x1254",
+      "actualCellSize": "627x627",
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept\nAsset type: transparent game sprite atlas, exactly 1024x1024 pixels, EXACTLY 2x2 equal grid, four 512x512 cells.\nPrimary request: four separate friendly rounded toy game sprites for a children's park cleanup movement game, one sprite centered in each precisely equal cell.\nSubjects and placement: TOP-LEFT cell: cute upright white rabbit in blue overalls, the character Bilbiljon, with long rabbit ears and full body. TOP-RIGHT cell: Uzbek boy with black hair, green T-shirt and dark shorts, full body. BOTTOM-LEFT cell: Uzbek girl in a pink outfit with dark pigtails, full body. BOTTOM-RIGHT cell: green outdoor recycling bin, full object.\nComposition/framing: each sprite entirely contained in its own 512x512 cell; centered at x=256,y=256; x=768,y=256; x=256,y=768; x=768,y=768 respectively. Generous equal transparent padding around each sprite. No touching, crossing, or shared props between cells. No visible grid lines. Full-body front-facing slight overhead 2.5D perspective; matched scale, camera and lighting; rabbit ears and all feet fully visible.\nStyle/medium: crisp polished casual children's mobile game sprites, softly shaded, rounded friendly toy shapes, not pixel art.\nLighting/mood: cheerful soft lighting with soft compact drop shadow beneath each sprite.\nConstraints: genuinely transparent background with alpha, no scenery or background color; no text including the name Bilbiljon, no labels, no watermarks, no decorative frames, no extra subjects, no extra props between cells. Precisely four sprites and precisely the stated quadrant arrangement.",
+      "original": "C:/Users/intel/.codex/generated_images/01a11a33-6224-7712-a00a-a68082946862/exec-3bd1261e-ff26-409a-ae61-c1a3755d9d0c.png"
+    }
+  ],
+  "inspection": "Visually inspected generated images: park fills the full square with green checker grass, edge trees/flowers/pebbles, golden winding path, open center/right; no UI, text, characters, waste or bins. Atlas shows four separate full-body sprites, correct quadrant order, with ears and feet visible, compact shadows, no labels or grid. Tool output dimensions exceed the requested size, so use equal 627px cells or percentage CSS coordinates."
+}

@@ -30,7 +30,7 @@ Development opens at the URL printed by the server (normally http://127.0.0.1:51
 | /quizzes      | Quiz selection                                               |
 | /quizzes/[id] | Five-question player, feedback and results                   |
 | /nature       | Illustrated nature game selection                            |
-| /nature/[id]  | Waste sorting and interactive park cleanup                   |
+| /nature/[id]  | Waste sorting, litter search and walking park adventure      |
 | /rewards      | Seven tree stages, daily reading goal and badges             |
 | /profile      | Stats, read books and best quiz results                      |
 | /settings     | Language, demo account, preferences and coming-soon features |
@@ -51,9 +51,10 @@ All content and authentication are mocked. Profile and progress persist in brows
 
 Application links use document navigation through `components/app-link.tsx`. This avoids a Vinext production RSC prefetch/navigation failure that prevented clicks from changing pages. Onboarding actions commit profile and preference changes before navigating through `lib/navigation.ts`, so device-local data survives the page load. Verify navigation against the production build, as the failure did not appear in the development server.
 
-The Nature section contains two complete mock games: sort six objects into three bins, or collect eight pieces of litter in a park. Each game awards five points once; replays keep the existing award. Game completion persists with the child's profile and appears in their history. Older saved profiles gain an empty `completedGames` list while retaining their progress. Keyboard and touch controls work without timers or dragging.
+The Nature section contains three complete mock games: sort six objects into three bins, collect eight pieces of litter, or choose Bilbiljon, Aziz or Malika and walk around a park to collect and deliver twelve objects. The walking adventure opens at `/nature/park`: click/tap a destination or use the direction pad, arrow keys or WASD; Space/E collects nearby litter and Enter delivers a bag at the bin. Each object earns ten round points (120 total), while a complete delivery awards five profile points once. Partial deliveries are allowed; collection alone does not complete the game. Each game's five-point profile reward is idempotent, and completion persists in profile history. Older saved profiles retain their progress. There is no time limit; unfinished rounds restart when leaving the page.
 
 Nature artwork: [asset and exact generation prompt](docs/ARTWORK_NATURE.json).
+Walking game terrain and character sprites: [exact prompts and method](docs/ARTWORK_PARK.json).
 
 ## Supabase next phase
 

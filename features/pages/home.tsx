@@ -60,7 +60,7 @@ export function HomePage() {
       art: "nature" as LearningWorld,
       color: "lilac",
       href: "/nature",
-      tag: t("2 ta qiziqarli o‘yin", "2 увлекательные игры"),
+      tag: t("3 ta qiziqarli o‘yin", "3 увлекательные игры"),
     },
     {
       title: "Zakovat Battles",

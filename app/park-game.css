@@ -1,0 +1,496 @@
+.park-page-heading .page-heading {
+  margin-bottom: 20px;
+}
+.park-adventure {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 15px;
+  background: linear-gradient(#eff8ff, #f3faf0);
+  border: 3px solid #fff;
+  border-radius: 34px;
+  box-shadow:
+    0 12px 0 #58926712,
+    0 20px 40px #24635712;
+  color: #185948;
+}
+.park-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 38px;
+  gap: 10px;
+  padding: 0 5px 12px;
+  font-size: 14px;
+  font-weight: 800;
+}
+.park-hud > span {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+.park-hud > span:first-child svg {
+  color: #00b789;
+}
+.park-bag {
+  margin-left: auto;
+  color: #6686a1;
+}
+.park-score {
+  border-radius: 20px;
+  color: #dc8600;
+  background: #fff3c3;
+  padding: 6px 12px;
+  min-width: 65px;
+  justify-content: center;
+}
+.park-board {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 26px;
+  isolation: isolate;
+  background: #70c875;
+  touch-action: manipulation;
+}
+.park-terrain {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  user-select: none;
+  pointer-events: none;
+}
+.park-world {
+  position: absolute;
+  inset: 0;
+}
+.park-sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/park/characters.png");
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+}
+.park-player {
+  position: absolute;
+  width: 11%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -82%);
+  pointer-events: none;
+  z-index: 4;
+}
+.park-player.is-walking > .park-sprite {
+  animation: park-walk 0.32s infinite alternate ease-in-out;
+}
+.park-carry-count {
+  position: absolute;
+  right: -5px;
+  top: 7%;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 900;
+  border: 2px solid #fff;
+  background: #ffe58d;
+  color: #987422;
+  border-radius: 12px;
+  padding: 3px;
+}
+.park-bin {
+  position: absolute;
+  width: 12%;
+  aspect-ratio: 1;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  transform: translate(-50%, -75%);
+  z-index: 3;
+  cursor: pointer;
+}
+.park-bin-ready {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background: #00ba88;
+  border: 2px solid #fff;
+  padding: 4px;
+  border-radius: 50%;
+}
+.park-litter {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  font-size: clamp(20px, 4.8vw, 27px);
+  z-index: 2;
+  filter: drop-shadow(0 3px 2px #24572f33);
+}
+.park-litter.is-near {
+  background: #fff1a3a3;
+  border-color: #ffdf69;
+  box-shadow: 0 0 0 4px #fff6c03b;
+}
+.park-litter:hover {
+  background: #ffffff55;
+}
+.park-start-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background: #f1faf0e6;
+  backdrop-filter: blur(4px);
+  text-align: center;
+}
+.park-start-overlay h2 {
+  font-size: 19px;
+  font-weight: 900;
+  color: #195846;
+}
+.park-start-overlay > p {
+  font-size: 14px;
+  color: #7b9a84;
+}
+.park-character-row {
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+  width: 100%;
+}
+.park-character {
+  position: relative;
+  padding: 6px 6px 10px;
+  border: 3px solid #fff;
+  border-radius: 28px;
+  width: 96px;
+  color: #45626b;
+  background: #fff;
+  box-shadow: 0 3px 0 #97b9a329;
+  cursor: pointer;
+}
+.park-character.is-selected {
+  border-color: #00bf92;
+  box-shadow: 0 0 0 4px #83e7b937;
+}
+.park-avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  border-radius: 20px;
+  background: linear-gradient(#b7f9d1, #87eec0);
+}
+.park-avatar .park-sprite {
+  transform: scale(0.9);
+}
+.park-character strong {
+  font-size: 14px;
+  margin-top: 7px;
+  display: block;
+}
+.park-selected-check {
+  position: absolute;
+  right: -6px;
+  top: -5px;
+  background: #00bb8b;
+  color: #fff;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  padding: 3px;
+  border: 2px solid #fff;
+}
+.park-action {
+  min-height: 45px;
+  border-radius: 24px;
+  border: 1px solid #edc664;
+  box-shadow: 0 4px 0 #d4aa68;
+  background: linear-gradient(#ffe486, #ffce59);
+  color: #947020;
+  padding: 11px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 15px;
+  font-weight: 850;
+  cursor: pointer;
+}
+.park-action:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #d4aa68;
+}
+.park-start-button {
+  min-width: 135px;
+}
+.park-action.park-deliver {
+  color: #056b4b;
+  background: linear-gradient(#73edc6, #00c593);
+  border-color: #0db78c;
+  box-shadow: 0 4px 0 #089b78;
+}
+.park-action.park-deliver > span {
+  min-width: 20px;
+  padding: 2px 5px;
+  font-size: 12px;
+  background: #ffffff7a;
+  border-radius: 8px;
+}
+.park-action:disabled {
+  background: #e5e7eb;
+  border-color: #d6dce0;
+  box-shadow: none;
+  color: #9ba6b2;
+  cursor: default;
+}
+.park-instruction {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #54836b;
+  margin: 10px 0;
+}
+.park-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.park-dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 44px);
+  grid-template-rows: repeat(2, 44px);
+  gap: 5px;
+  flex-shrink: 0;
+}
+.park-direction {
+  background: #fff;
+  color: #65937c;
+  border: 2px solid #d9eae0;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
+.park-direction-up {
+  grid-column: 2;
+}
+.park-direction-left {
+  grid-row: 2;
+  grid-column: 1;
+}
+.park-direction-down {
+  grid-row: 2;
+  grid-column: 2;
+}
+.park-direction-right {
+  grid-row: 2;
+  grid-column: 3;
+}
+.park-direction:active {
+  background: #d2f8e5;
+  color: #109267;
+}
+.park-action-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.park-keyboard-help {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #8ca0af;
+  line-height: 1.6;
+  text-align: center;
+}
+.park-delivery-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 10px;
+  border-top: 1px solid #dfebe1;
+  padding: 12px 5px 0;
+  color: #6f977f;
+}
+.park-intro-instruction {
+  text-align: center;
+  font-size: 14px;
+  color: #779386;
+  line-height: 1.5;
+  padding: 15px 10px 3px;
+}
+.park-adventure button:focus-visible {
+  outline: 3px solid #592fa6;
+  outline-offset: 3px;
+}
+.nature-game-card.sky {
+  background: linear-gradient(135deg, #d9f2ff, #e1f9e9);
+}
+.nature-featured-game {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  column-gap: 35px;
+  align-items: center;
+}
+.nature-featured-game .nature-card-meta {
+  grid-column: 1 / -1;
+}
+.nature-featured-game .nature-card-art {
+  grid-column: 1;
+  grid-row: 2 / 5;
+  height: 220px;
+  padding: 15px 0;
+}
+.nature-featured-game > h2 {
+  align-self: end;
+  margin-top: 15px;
+}
+.nature-featured-game > p {
+  margin: 5px 0 15px;
+}
+.nature-featured-game > .primary-button {
+  align-self: start;
+}
+.park-card-preview {
+  height: 100%;
+  width: 100%;
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding: 0 10px 7px;
+  overflow: hidden;
+  background: url("/images/park/terrain.png") center/cover;
+}
+.park-card-preview .park-sprite {
+  width: 33%;
+  aspect-ratio: 1;
+  height: auto;
+  max-height: 130px;
+  filter: drop-shadow(0 5px 5px #194d3330);
+}
+@keyframes park-walk {
+  from {
+    transform: translateY(-2px) rotate(-3deg);
+  }
+  to {
+    transform: translateY(1px) rotate(3deg);
+  }
+}
+@media (max-width: 700px) {
+  .park-adventure {
+    padding: 11px;
+    border-radius: 28px;
+  }
+  .park-board {
+    border-radius: 22px;
+  }
+  .park-player {
+    width: 14%;
+  }
+  .park-bin {
+    width: 15%;
+  }
+  .park-hud {
+    font-size: 13px;
+  }
+  .park-character {
+    width: 84px;
+    border-radius: 25px;
+  }
+  .park-character strong {
+    font-size: 13px;
+  }
+  .park-start-overlay {
+    padding: 12px;
+    gap: 16px;
+  }
+  .park-start-overlay h2 {
+    font-size: 17px;
+  }
+  .park-start-overlay > p {
+    display: none;
+  }
+  .park-character-row {
+    gap: 8px;
+  }
+  .park-controls {
+    gap: 13px;
+  }
+  .park-dpad {
+    grid-template-columns: repeat(3, 44px);
+  }
+  .park-action {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .park-keyboard-help {
+    display: none;
+  }
+  .park-page-heading .page-heading {
+    margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 12px;
+  }
+  .park-page-heading .page-heading h1 {
+    font-size: 23px;
+    margin: 0;
+  }
+  .park-page-heading .page-heading .back-link {
+    margin: 0;
+    font-size: 12px;
+    gap: 4px;
+  }
+  .park-page-heading .page-heading p,
+  .park-page-heading .page-heading .eyebrow {
+    display: none;
+  }
+  .nature-featured-game {
+    display: flex;
+  }
+  .nature-featured-game .nature-card-art {
+    height: 175px;
+    width: 100%;
+    padding: 12px 0;
+  }
+  .nature-featured-game > h2 {
+    align-self: auto;
+    margin-top: 0;
+  }
+  .nature-featured-game > p {
+    margin: 0 0 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .park-player.is-walking > .park-sprite {
+    animation: none;
+  }
+}
