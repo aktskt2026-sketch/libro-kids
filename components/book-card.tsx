@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Check, Clock, Star, ArrowRight } from "lucide-react";
 import { useApp } from "@/hooks/use-app";
-import { Icon } from "@/components/common";
+import { StoryIllustration } from "@/components/world-illustration";
 import { categoryNames } from "@/data/books";
 import type { Book } from "@/types";
 export function BookCard({ book }: { book: Book }) {
@@ -18,9 +18,7 @@ export function BookCard({ book }: { book: Book }) {
         <span className="cover-meta">
           LIBRO-KIDS · {categoryNames[book.category][preferences.language]}
         </span>
-        <span className="cover-icon">
-          <Icon name={book.icon} size={60} />
-        </span>
+        <StoryIllustration bookId={book.id} />
         <strong>{book.title[preferences.language]}</strong>
         <span className="cover-subtitle">
           {book.subtitle[preferences.language]}
@@ -37,7 +35,6 @@ export function BookCard({ book }: { book: Book }) {
           {categoryNames[book.category][preferences.language]} · {book.age}{" "}
           {t("yosh", "лет")}
         </span>
-        <h3>{book.title[preferences.language]}</h3>
         <div className="book-meta">
           <span>
             <Clock size={14} />

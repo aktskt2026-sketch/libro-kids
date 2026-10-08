@@ -1,0 +1,1191 @@
+/* Illustrated national storybook theme, based on the supplied Libro-Kids references. */
+:root {
+  --background: #f3edff;
+  --foreground: #32135e;
+  --card-foreground: #32135e;
+  --popover-foreground: #32135e;
+  --primary: #822df5;
+  --primary-foreground: #fff;
+  --secondary: #eee5ff;
+  --secondary-foreground: #562496;
+  --muted: #f4efff;
+  --muted-foreground: #726187;
+  --accent: #e6d8ff;
+  --accent-foreground: #6123ae;
+  --border: #e4d8f6;
+  --input: #e4d8f6;
+  --ring: #9a50ef;
+}
+body {
+  color: #32135e;
+  background:
+    radial-gradient(ellipse at 12% 0%, #fff 0, #ffffff00 45%),
+    linear-gradient(135deg, #ede2ff, #faf5ff 48%, #dfccff);
+  background-attachment: fixed;
+}
+:focus-visible {
+  outline-color: #822df5;
+}
+h1,
+h2,
+h3 {
+  color: #371272;
+}
+.ambient {
+  display: none;
+}
+.site-header {
+  height: 102px;
+}
+.logo {
+  color: #350477;
+  font-size: 30px;
+  gap: 5px;
+  letter-spacing: -1.3px;
+}
+.logo-symbol {
+  width: 64px;
+  height: 60px;
+  background: none;
+  box-shadow: none;
+  transform: none;
+}
+.logo-symbol .world-illustration {
+  width: 64px;
+  height: 64px;
+}
+.logo small {
+  color: #8b60b2;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  margin-top: 4px;
+}
+.letter-k {
+  color: #ff5379;
+}
+.letter-i {
+  color: #ffbd28;
+}
+.letter-d {
+  color: #0ebd8e;
+}
+.letter-s {
+  color: #4675fa;
+}
+.top-nav {
+  background: #ffffffb8;
+  border: 2px solid #fff;
+  border-radius: 22px;
+  padding: 6px;
+  box-shadow: 0 5px 20px #57239308;
+}
+.top-nav a {
+  color: #70558e;
+  border-radius: 16px;
+}
+.top-nav a.active {
+  color: #fff;
+  background: linear-gradient(135deg, #ab57ff, #711dde);
+  box-shadow: 0 3px 8px #8c37e62e;
+}
+.language-pill,
+.icon-button,
+.avatar-mini {
+  border-color: #e1d2f4;
+}
+.language-pill {
+  color: #603298;
+  background: #fff;
+}
+.avatar-mini {
+  background: #8b37e5;
+  color: #fff;
+}
+.eyebrow {
+  color: #8852b9;
+  letter-spacing: 1.4px;
+}
+.home-intro {
+  margin: 4px 0 15px;
+}
+.home-date {
+  color: #8b71a4;
+}
+.tiny-sun {
+  color: #eeb031;
+}
+.greeting-card {
+  background: #eee0ff;
+  border: 3px solid #fff;
+  border-radius: 34px;
+  min-height: 350px;
+  box-shadow:
+    0 15px 40px #672baa16,
+    inset 0 0 0 1px #e7d3ff;
+  overflow: hidden;
+  isolation: isolate;
+}
+.greeting-card::before,
+.greeting-card::after {
+  display: none;
+}
+.greeting-landscape {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+}
+.greeting-copy {
+  padding: 40px 42px;
+  max-width: 62%;
+}
+.greeting-copy::before {
+  content: "";
+  position: absolute;
+  inset: -30px -90px -30px -30px;
+  z-index: -1;
+  background: linear-gradient(90deg, #f6edfff5, #f6edffe0 62%, #f6edff00);
+}
+.greeting-kicker {
+  color: #814ac0;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+}
+.greeting-copy h1 {
+  color: #450f8f;
+  font-size: clamp(30px, 3.7vw, 47px);
+  letter-spacing: -1.4px;
+  margin: 12px 0 13px;
+}
+.greeting-copy p {
+  color: #62417e;
+  font-size: 17px;
+  max-width: 430px;
+  line-height: 1.65;
+  margin-bottom: 23px;
+}
+.primary-button {
+  color: #fff;
+  background: linear-gradient(180deg, #af62ff 0%, #882df4 56%, #6b17db 100%);
+  box-shadow:
+    0 5px 0 #5913b0,
+    0 8px 18px #8133d22e,
+    inset 0 2px 1px #e8cfff9c;
+  border: 1px solid #ffffff60;
+  border-radius: 24px;
+  font-size: 16px;
+  padding: 13px 26px;
+  min-height: 51px;
+}
+.primary-button:hover {
+  background: linear-gradient(180deg, #b978ff, #7b20e8);
+  box-shadow:
+    0 5px 0 #5913b0,
+    0 10px 24px #8133d240;
+}
+.primary-button:active {
+  box-shadow: 0 2px 0 #5913b0;
+}
+.greeting-art {
+  right: 34px;
+  width: 38%;
+}
+.greeting-art .mascot {
+  height: 310px;
+  width: 100%;
+  filter: drop-shadow(0 8px 12px #60239122);
+}
+.speech-bubble {
+  top: 25px;
+  right: 2px;
+  padding: 12px 17px;
+  max-width: 210px;
+  color: #5b269d;
+  font-size: 14px;
+  border-radius: 22px 22px 22px 4px;
+  box-shadow: 0 5px 15px #7845a915;
+  transform: rotate(2deg);
+}
+.decor-star {
+  color: #ffc43a;
+  text-shadow: 0 3px 0 #f3a83a;
+}
+.star-one {
+  top: 115px;
+  left: 4px;
+}
+.star-two {
+  right: -6px;
+  bottom: 60px;
+}
+.stats-row {
+  gap: 15px;
+  margin: 20px 0 32px;
+}
+.stat-card {
+  border: 2px solid #fff;
+  border-radius: 24px;
+  box-shadow: 0 5px 16px #7134a608;
+  padding: 17px 24px;
+}
+.stat-card strong {
+  color: #46148c;
+}
+.stat-card small {
+  font-size: 14px;
+  color: #81718f;
+}
+.home-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+.section-heading h2 {
+  font-size: 27px;
+  color: #410e87;
+}
+.section-heading p {
+  font-size: 15px;
+  color: #847095;
+}
+.section-heading > svg {
+  color: #ad6eef;
+}
+.feature-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 19px;
+}
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  padding: 13px 23px 22px;
+  border-radius: 29px;
+  border: 3px solid #fff;
+  min-height: 285px;
+  color: #3c1c63;
+  box-shadow:
+    0 7px 0 #ae8bdc16,
+    0 10px 23px #6b32a30a;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 7px 0 #b787ec30,
+    0 15px 26px #6632a918;
+}
+.feature-card.blue {
+  background: linear-gradient(145deg, #e6dcff, #f1e9ff 65%, #d9c8ff);
+}
+.feature-card.peach {
+  background: linear-gradient(145deg, #ffe0bd, #fff4d9 65%, #ffdf8c);
+}
+.feature-card.mint {
+  background: linear-gradient(145deg, #c9f3d3, #e9ffe8 65%, #b9e7c7);
+}
+.feature-card.lilac {
+  background: linear-gradient(145deg, #c9ddff, #e4efff 65%, #bdcdff);
+}
+.feature-card.pink {
+  background: linear-gradient(145deg, #ffd5ed, #ffeaf6 65%, #f5c4e8);
+}
+.feature-card.yellow {
+  background: linear-gradient(145deg, #fff1ba, #fff8dd 65%, #ffdf88);
+}
+.feature-top {
+  height: 151px;
+  margin: 0 0 7px;
+  align-items: center;
+  justify-content: center;
+}
+.feature-top > svg {
+  position: absolute;
+  top: 22px;
+  right: 21px;
+  color: #8260ae;
+  width: 21px;
+}
+.world-illustration,
+.story-illustration {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 300% 200%;
+  flex-shrink: 0;
+}
+.world-illustration {
+  background-image: url("/images/storybook/learning-worlds.png");
+  width: 170px;
+  height: 170px;
+}
+.world-books,
+.scene-rabbit {
+  background-position: 0% 0%;
+}
+.world-quiz,
+.scene-kindness {
+  background-position: 50% 0%;
+}
+.world-tree,
+.scene-garden {
+  background-position: 100% 0%;
+}
+.world-space,
+.scene-space {
+  background-position: 0% 100%;
+}
+.world-battle,
+.scene-map {
+  background-position: 50% 100%;
+}
+.world-shop,
+.scene-fox {
+  background-position: 100% 100%;
+}
+.feature-top .world-illustration {
+  filter: drop-shadow(0 8px 6px #61388116);
+  transition: transform 0.22s;
+}
+.feature-card:hover .world-illustration {
+  transform: translateY(-3px) rotate(-3deg);
+}
+.feature-card h3 {
+  font-size: 22px;
+  color: #3f1776;
+  margin-bottom: 6px;
+}
+.feature-card p {
+  font-size: 15px;
+  color: #735a89;
+  line-height: 1.5;
+  min-height: 44px;
+}
+.feature-caption {
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: 900;
+  color: #7233ae;
+}
+.feature-card .soon-badge {
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  font-size: 12px;
+  border-radius: 12px;
+  padding: 4px 9px;
+  color: #7c4d98;
+  background: #ffffffd9;
+}
+.points-info {
+  border: 2px solid #fff;
+  background: #ffffffc9;
+  border-radius: 22px;
+  margin-top: 21px;
+}
+.points-info strong {
+  color: #58218e;
+  font-size: 16px;
+}
+.points-info small {
+  color: #8b729d;
+  font-size: 14px;
+}
+.home-aside {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.wisdom-card {
+  border-radius: 28px;
+  background: linear-gradient(135deg, #fff, #fff5e5);
+  padding: 24px 27px;
+}
+.wisdom-header {
+  margin-bottom: 12px;
+}
+.mentor-avatar {
+  width: 70px;
+  height: 70px;
+  border: 3px solid #fff;
+  background: #e9ddff;
+}
+.mentor-avatar img {
+  height: 85px;
+}
+.wisdom-header .eyebrow,
+.wisdom-label,
+.tree-preview .eyebrow {
+  font-size: 12px;
+}
+.wisdom-header h3 {
+  font-size: 20px;
+  color: #682995;
+}
+.wisdom-title {
+  font-size: 23px;
+}
+.wisdom-card p {
+  font-size: 16px;
+  color: #786080;
+  margin-bottom: 16px;
+}
+.wisdom-button {
+  color: #7d40b7;
+  background: #f3e7ff;
+  border-color: #e5d0f4;
+  font-size: 14px;
+  min-height: 44px;
+  border-radius: 16px;
+}
+.tree-preview {
+  background: linear-gradient(135deg, #e1f5d6, #f2ffe8);
+  border-radius: 28px;
+  min-height: 286px;
+  padding: 26px;
+}
+.tree-preview h3 {
+  font-size: 25px;
+  color: #376e3a;
+}
+.tree-preview > img {
+  height: 176px;
+  width: 205px;
+  top: 15px;
+  right: -6px;
+}
+.tree-preview-copy {
+  max-width: 60%;
+}
+.tree-preview-footer {
+  margin-top: 64px;
+}
+.tree-preview-footer > div,
+.tree-preview-footer > a {
+  font-size: 14px;
+}
+.learning-progress {
+  height: 10px !important;
+  background: #e5d8f4 !important;
+}
+.learning-progress > div {
+  background: linear-gradient(90deg, #ad64ff, #7621e5) !important;
+}
+.tree-preview .learning-progress > div,
+.daily-goal .learning-progress > div {
+  background: linear-gradient(90deg, #71cd6b, #3fa248) !important;
+}
+.coming-banner {
+  background: linear-gradient(100deg, #eee0ff, #faf5ff);
+  border: 2px solid #fff;
+  border-radius: 26px;
+}
+.coming-banner h3 {
+  font-size: 18px;
+}
+.coming-banner p {
+  font-size: 15px;
+  color: #8b6d9e;
+}
+.coming-banner > a {
+  color: #843bd0;
+  font-size: 14px;
+}
+.page-footer {
+  color: #a084b5;
+}
+.bottom-nav {
+  background: #fffffff2;
+  border: 2px solid #fff;
+  box-shadow: 0 -4px 35px #6a27a514;
+  border-radius: 28px;
+}
+.bottom-nav a {
+  color: #9274ad;
+}
+.bottom-nav a.active {
+  color: #7c21d7;
+  background: #efe1ff;
+}
+.page-heading h1 {
+  color: #481098;
+  font-size: clamp(29px, 3.6vw, 43px);
+}
+.page-heading p {
+  color: #8b729e;
+  font-size: 16px;
+}
+.library-controls,
+.settings-card,
+.history-card,
+.profile-counts section,
+.reader-card,
+.quiz-player-card,
+.result-card {
+  border: 2px solid #fff;
+  box-shadow: 0 10px 30px #67329b0b;
+  border-radius: 28px;
+}
+.search-box {
+  border-color: #e6d8f5;
+  background: #fbf8ff;
+}
+.search-box > svg {
+  color: #9b6fc1;
+}
+.filter-chips button.selected,
+.category-chips button.selected {
+  background: #8b37e9;
+  color: #fff;
+  border-color: #8b37e9;
+  box-shadow: 0 3px 9px #7c2fcc24;
+}
+.filter-chips button,
+.category-chips button {
+  font-size: 14px;
+}
+.library-result-heading h2 {
+  color: #4f1d86;
+}
+.book-card {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #fff;
+  border-radius: 27px;
+  box-shadow: 0 7px 22px #6d35a612;
+}
+.book-cover {
+  overflow: hidden;
+  min-height: 255px;
+  padding: 30px 14px 15px;
+  justify-content: flex-start;
+  border-radius: 24px 24px 17px 17px;
+}
+.book-cover::before,
+.book-cover::after {
+  display: none;
+}
+.book-cover.lilac {
+  background: linear-gradient(145deg, #dbc6ff, #f1e5ff);
+}
+.book-cover.pink {
+  background: linear-gradient(145deg, #ffcce9, #fff0f8);
+}
+.book-cover.mint {
+  background: linear-gradient(145deg, #c6efce, #efffec);
+}
+.book-cover.blue {
+  background: linear-gradient(145deg, #c4dbff, #eef4ff);
+}
+.book-cover.peach {
+  background: linear-gradient(145deg, #ffdeae, #fff3d9);
+}
+.book-cover.yellow {
+  background: linear-gradient(145deg, #ffe7a0, #fff9d8);
+}
+.story-illustration {
+  background-image: url("/images/storybook/book-scenes.png");
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+.book-cover .story-illustration {
+  width: 100%;
+  max-width: 165px;
+  height: auto;
+  margin: 0 auto;
+}
+.cover-meta {
+  color: #805a9c;
+  font-size: 11px;
+  text-align: center;
+}
+.book-cover > strong {
+  color: #491d78;
+  font-size: 20px;
+  line-height: 1.25;
+  margin-top: 0;
+}
+.cover-subtitle {
+  color: #7e6197;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.book-details {
+  padding: 18px 20px 21px;
+  margin-top: auto;
+}
+.book-details .book-meta {
+  margin-top: 12px;
+}
+.book-details h3 {
+  font-size: 19px;
+}
+.book-category {
+  color: #9a72b4;
+}
+.read-button {
+  color: #fff;
+  border-color: #a45aed;
+  background: linear-gradient(180deg, #ab65f9, #7b26db);
+  border-radius: 18px;
+  box-shadow: 0 3px 0 #6115b4;
+}
+.read-button:hover {
+  color: #fff;
+  background: #8229e4;
+}
+.read-badge {
+  background: #fff;
+  color: #389660;
+}
+.illustrated-reader {
+  width: 220px;
+  height: 220px;
+  margin: 20px auto;
+  background: linear-gradient(135deg, #f6edff, #eef3ff);
+  border-radius: 36px;
+}
+.illustrated-reader .story-illustration {
+  width: 210px;
+  height: 210px;
+}
+.story-text {
+  color: #563a6f;
+}
+.secondary-button {
+  color: #8a49bd;
+  background: #f4eaff;
+  border-color: #e4cef7;
+}
+.quiz-banner {
+  background: linear-gradient(110deg, #ead7ff, #f7eeff);
+  border: 3px solid #fff;
+  border-radius: 28px;
+}
+.quiz-banner h2 {
+  color: #67229f;
+}
+.quiz-banner-art {
+  width: 100px;
+  height: 100px;
+}
+.quiz-banner p {
+  color: #88649e;
+}
+.quiz-card {
+  border: 3px solid #fff;
+  border-radius: 30px;
+  box-shadow: 0 10px 25px #6735a811;
+}
+.quiz-card .hero-symbol {
+  background: none;
+  border: none;
+  box-shadow: none;
+  width: 180px;
+  height: 180px;
+}
+.hero-symbol .world-illustration {
+  width: 180px;
+  height: 180px;
+}
+.quiz-card h2 {
+  color: #58228c;
+}
+.quiz-card-meta {
+  color: #8c639e;
+}
+.quiz-encouragement {
+  background: #f6ebff;
+  border: 2px solid #fff;
+}
+.quiz-answer.selected {
+  border-color: #a358ed;
+  background: #f4e7ff;
+  color: #6826a6;
+}
+.quiz-answer.selected .answer-letter {
+  background: #923ee8;
+  color: #fff;
+}
+.rewards-hero,
+.profile-hero {
+  background: linear-gradient(135deg, #f8f0ff, #e4d1ff);
+  border: 3px solid #fff;
+  box-shadow: 0 9px 30px #6f34a512;
+}
+.settings-language.selected,
+.choice-card.selected,
+.language-option.selected {
+  border-color: #aa67ee;
+  background: #f6ecff;
+  color: #7233ac;
+}
+.notification-switch[data-state="checked"] {
+  background: #9140e5 !important;
+}
+.text-button {
+  color: #8b38d7;
+}
+.friendly-modal {
+  background: linear-gradient(160deg, #fff, #f1e7ff);
+  border: 3px solid #fff;
+  border-radius: 32px;
+}
+.modal-illustration {
+  background: #ead6ff;
+  color: #9946e9;
+}
+.onboarding-main {
+  position: relative;
+}
+.welcome-screen {
+  position: relative;
+  isolation: isolate;
+}
+.welcome-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0 -130px -10px;
+  background:
+    linear-gradient(0deg, #f3e9ff 0%, #f3e9ff00 70%),
+    url("/images/storybook/samarkand-world.png") center / cover;
+  border-radius: 50px;
+  z-index: -1;
+  opacity: 0.65;
+}
+.welcome-brand h1 {
+  color: #420b8a;
+}
+.welcome-brand h1 > span {
+  background: linear-gradient(
+    90deg,
+    #ff547b,
+    #ffc135 35%,
+    #0bbc98 65%,
+    #4977ff
+  );
+  color: transparent;
+  background-clip: text;
+}
+.welcome-brand > p {
+  color: #923ae1;
+  font-weight: 900;
+}
+.welcome-speech {
+  color: #6926a2;
+  background: #fff;
+  border: 2px solid #f1e3ff;
+}
+.welcome-art .mascot {
+  filter: drop-shadow(0 12px 16px #7440ad25);
+}
+.onboard-card {
+  border: 3px solid #fff;
+  box-shadow: 0 12px 35px #7139a411;
+}
+.onboarding-steps .active {
+  background: #9e4bea;
+}
+.step-dots span.active {
+  background: #9e4bea;
+}
+.step-dots span.done {
+  background: #c292ec;
+}
+.demo-link,
+.welcome-note,
+.onboarding-footer {
+  color: #9975af;
+}
+.helper-bubble {
+  color: #8553b3;
+  border-color: #dfc9f5;
+}
+
+@media (max-width: 980px) {
+  .feature-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .feature-card {
+    padding: 12px 17px 20px;
+  }
+  .feature-card h3 {
+    font-size: 20px;
+  }
+  .greeting-copy {
+    max-width: 63%;
+    padding: 34px;
+  }
+  .greeting-art {
+    right: 18px;
+    width: 37%;
+  }
+}
+@media (max-width: 700px) {
+  .site-header {
+    height: 85px;
+    padding: 0 17px;
+    gap: 12px;
+  }
+  .logo {
+    font-size: 23px;
+    gap: 0;
+  }
+  .logo-symbol {
+    width: 48px;
+    height: 48px;
+  }
+  .logo-symbol .world-illustration {
+    width: 48px;
+    height: 48px;
+  }
+  .logo small {
+    font-size: 10px;
+    margin-top: 3px;
+  }
+  .header-actions {
+    gap: 7px;
+  }
+  .language-pill {
+    padding: 7px 9px;
+    gap: 4px;
+    font-size: 12px;
+  }
+  .language-pill > span {
+    display: none;
+  }
+  .avatar-mini {
+    height: 34px;
+    width: 34px;
+    font-size: 16px;
+  }
+  .app-main {
+    padding: 0 16px 115px;
+  }
+  .home-intro {
+    margin: 0 3px 13px;
+  }
+  .home-intro .eyebrow {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  .greeting-card {
+    min-height: 380px;
+    border-radius: 30px;
+  }
+  .greeting-landscape {
+    object-position: 62% center;
+  }
+  .greeting-copy {
+    max-width: 100%;
+    padding: 25px 24px 0;
+    height: auto;
+    align-self: flex-start;
+    position: static;
+  }
+  .greeting-copy::before {
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      #f5ebfff2,
+      #f5ebfff0 30%,
+      #f5ebff00 65%
+    );
+  }
+  .greeting-kicker {
+    font-size: 10px;
+    letter-spacing: 1.2px;
+  }
+  .greeting-copy h1 {
+    font-size: 31px;
+    margin: 9px 0;
+    letter-spacing: -1px;
+    max-width: none;
+  }
+  .wave {
+    font-size: 26px;
+  }
+  .greeting-copy p {
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 275px;
+    margin-bottom: 17px;
+  }
+  .greeting-copy .primary-button {
+    font-size: 14px;
+    padding: 11px 20px;
+    min-height: 44px;
+    position: absolute;
+    left: 24px;
+    bottom: 25px;
+    z-index: 4;
+  }
+  .greeting-art {
+    width: 67%;
+    right: -3px;
+    height: 235px;
+  }
+  .greeting-art .mascot {
+    height: 225px;
+    width: 100%;
+    object-fit: contain;
+  }
+  .speech-bubble {
+    max-width: 132px;
+    top: 65px;
+    right: auto;
+    left: -73px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  .speech-bubble svg {
+    display: none;
+  }
+  .star-one {
+    top: 126px;
+    left: -73px;
+    font-size: 24px;
+  }
+  .star-two {
+    bottom: 28px;
+    right: 9px;
+    font-size: 29px;
+  }
+  .stats-row {
+    gap: 8px;
+    margin: 15px 0 26px;
+  }
+  .stat-card {
+    border-radius: 19px;
+    padding: 11px 8px;
+    gap: 7px;
+  }
+  .stat-card .icon-bubble {
+    height: 32px;
+    width: 32px;
+    border-radius: 12px;
+  }
+  .stat-card .icon-bubble svg {
+    width: 21px;
+    height: 21px;
+  }
+  .stat-card strong {
+    font-size: 21px;
+  }
+  .stat-card strong span {
+    font-size: 11px;
+  }
+  .stat-card small {
+    font-size: 11px;
+  }
+  .section-heading {
+    margin: 0 2px 17px;
+    gap: 12px;
+  }
+  .section-heading h2 {
+    font-size: 24px;
+  }
+  .section-heading p {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+  .section-heading > svg {
+    width: 20px;
+  }
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+  .feature-card {
+    min-height: 254px;
+    border-radius: 25px;
+    padding: 11px 14px 17px;
+    border-width: 2px;
+  }
+  .feature-top {
+    height: 125px;
+    margin-bottom: 6px;
+  }
+  .feature-top .world-illustration {
+    width: 137px;
+    height: 137px;
+  }
+  .feature-top > svg {
+    top: 14px;
+    right: 12px;
+    width: 16px;
+  }
+  .feature-card h3 {
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+  }
+  .feature-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 39px;
+  }
+  .feature-caption {
+    font-size: 12px;
+    margin-top: 11px;
+    line-height: 1.45;
+  }
+  .feature-card .soon-badge {
+    font-size: 10px;
+    padding: 3px 7px;
+    right: 9px;
+    top: 10px;
+  }
+  .points-info {
+    padding: 13px 14px;
+    gap: 11px;
+  }
+  .points-info strong {
+    font-size: 14px;
+  }
+  .points-info small {
+    font-size: 12px;
+  }
+  .home-aside {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+  .wisdom-card {
+    padding: 23px;
+  }
+  .wisdom-card p {
+    font-size: 15px;
+  }
+  .wisdom-title {
+    font-size: 22px;
+  }
+  .tree-preview {
+    min-height: 268px;
+    padding: 23px;
+  }
+  .tree-preview h3 {
+    font-size: 23px;
+  }
+  .tree-preview > img {
+    width: 170px;
+    height: 153px;
+    top: 23px;
+  }
+  .tree-preview-footer {
+    margin-top: 90px;
+  }
+  .coming-banner {
+    padding: 17px;
+  }
+  .coming-banner h3 {
+    font-size: 17px;
+  }
+  .coming-banner p {
+    font-size: 14px;
+  }
+  .bottom-nav {
+    border-radius: 25px 25px 0 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: none;
+    transform: none;
+    padding-bottom: max(9px, env(safe-area-inset-bottom));
+  }
+  .bottom-nav a {
+    font-size: 10px;
+  }
+  .page-heading h1 {
+    font-size: 30px;
+  }
+  .page-heading p {
+    font-size: 15px;
+  }
+  .book-cover {
+    min-height: 246px;
+    padding: 30px 12px 15px;
+  }
+  .book-cover .story-illustration {
+    width: 100%;
+    max-width: 157px;
+    height: auto;
+  }
+  .book-cover > strong {
+    font-size: 19px;
+  }
+  .book-details {
+    padding: 18px;
+  }
+  .quiz-banner {
+    padding: 16px;
+    gap: 9px;
+  }
+  .quiz-banner-art {
+    width: 76px;
+    height: 76px;
+  }
+  .quiz-banner h2 {
+    font-size: 18px;
+  }
+  .quiz-banner p {
+    font-size: 13px;
+  }
+  .quiz-card {
+    padding: 24px;
+  }
+  .welcome-screen::before {
+    inset: 0 -15px;
+    border-radius: 30px;
+  }
+  .welcome-brand h1 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 374px) {
+  .app-main {
+    padding-inline: 12px;
+  }
+  .feature-grid {
+    gap: 10px;
+  }
+  .feature-card {
+    padding-inline: 11px;
+  }
+  .feature-card h3 {
+    font-size: 16px;
+  }
+  .feature-top .world-illustration {
+    width: 120px;
+    height: 120px;
+  }
+  .feature-top {
+    height: 116px;
+  }
+  .stat-card {
+    gap: 5px;
+    padding-inline: 6px;
+  }
+  .stat-card .icon-bubble {
+    width: 27px;
+    height: 27px;
+  }
+  .stat-card small {
+    font-size: 10px;
+  }
+  .speech-bubble {
+    left: -50px;
+    max-width: 113px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feature-card,
+  .world-illustration,
+  .primary-button {
+    transition: none;
+  }
+}

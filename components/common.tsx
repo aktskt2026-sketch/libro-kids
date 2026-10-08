@@ -44,6 +44,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { getTreeLevel } from "@/data/rewards";
 import type { ReactNode } from "react";
+import { WorldIllustration } from "@/components/world-illustration";
 const icons = {
   book: BookOpen,
   brain: Brain,
@@ -91,11 +92,13 @@ export function Logo() {
   return (
     <Link href="/home" className="logo" aria-label="Libro-Kids">
       <span className="logo-symbol">
-        <BookOpen size={27} />
-        <Star className="logo-star" size={13} fill="currentColor" />
+        <WorldIllustration world="books" />
       </span>
       <span>
-        Libro<span className="logo-orange">-Kids</span>
+        Libro-<span className="logo-letter letter-k">K</span>
+        <span className="logo-letter letter-i">i</span>
+        <span className="logo-letter letter-d">d</span>
+        <span className="logo-letter letter-s">s</span>
         <small>Bilim bilan o‘sing!</small>
       </span>
     </Link>
@@ -111,7 +114,11 @@ export function Mascot({
   return (
     <img
       className={"mascot " + className}
-      src={"/images/" + (mentor ? "bobojon" : "bilbiljon") + ".png"}
+      src={
+        mentor
+          ? "/images/bobojon.png"
+          : "/images/storybook/bilbiljon-purple.png"
+      }
       alt={mentor ? "Bobojon" : "Bilbiljon"}
     />
   );

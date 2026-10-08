@@ -5,6 +5,7 @@ import { AppShell } from "@/layouts/app-shell";
 import { PageHeading, Icon, Mascot } from "@/components/common";
 import { useApp } from "@/hooks/use-app";
 import { quizzes } from "@/data/quizzes";
+import { WorldIllustration } from "@/components/world-illustration";
 export function QuizzesPage() {
   const { preferences, progress, t } = useApp();
   return (
@@ -18,9 +19,7 @@ export function QuizzesPage() {
         )}
       />
       <section className="quiz-banner">
-        <span className="icon-bubble yellow">
-          <Icon name="brain" size={38} />
-        </span>
+        <WorldIllustration world="quiz" className="quiz-banner-art" />
         <div>
           <h2>
             {t(
@@ -52,7 +51,9 @@ export function QuizzesPage() {
               )}
             </div>
             <div className="hero-symbol">
-              <Icon name={q.icon} size={60} />
+              <WorldIllustration
+                world={q.id === "amir-temur" ? "battle" : "books"}
+              />
             </div>
             <h2>{q.name}</h2>
             <p>{q.description[preferences.language]}</p>

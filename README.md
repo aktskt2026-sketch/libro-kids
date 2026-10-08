@@ -53,7 +53,7 @@ Read [the integration guide](docs/SUPABASE_INTEGRATION.md). Public configuration
 
 ## Artwork and references
 
-Bilbiljon, Bobojon and the knowledge tree were created with built-in image generation. Exact prompts and method: [asset manifest](docs/ARTWORK.json). The UI follows the supplied text brief; no screenshot attachments were available.
+The illustrated purple theme follows the supplied Libro-Kids screenshot references: national clothing, a Samarqand-inspired storybook landscape, glossy purple buttons and colorful 3D learning cards. Four new assets live in `public/images/storybook/`; the six-cell atlases provide feature illustrations and story covers without embedded UI text. Exact prompts, reference and generation method: [redesign manifest](docs/ARTWORK_REDESIGN.json). The earlier mentor and reward-tree assets are documented in [the original manifest](docs/ARTWORK.json).
 
 The historical quiz content was checked against [Samarqand regional administration](https://samarkand.uz/press/news/bugun-amir-temur-1336-1405-tavallud-topgan-kun2514) and [Youth Affairs Agency](https://gov.uz/oz/yoshlar/news/view/128016). These links also appear on quiz pages.
 

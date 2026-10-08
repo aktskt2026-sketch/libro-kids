@@ -14,6 +14,10 @@ import {
 } from "@/components/common";
 import { wisdomItems } from "@/data/wisdom";
 import { getTreeLevel, treeLevels } from "@/data/rewards";
+import {
+  WorldIllustration,
+  type LearningWorld,
+} from "@/components/world-illustration";
 export function HomePage() {
   const { profile, progress, preferences, t } = useApp();
   const [modal, setModal] = useState<string | null>(null);
@@ -26,6 +30,7 @@ export function HomePage() {
       title: t("Kitoblarim", "Мои книги"),
       desc: t("Har bir kitob — yangi olam", "Каждая книга — новый мир"),
       icon: "book",
+      art: "books" as LearningWorld,
       color: "blue",
       href: "/library",
       tag: t("O‘qishni boshlaymiz", "Начнём читать"),
@@ -34,6 +39,7 @@ export function HomePage() {
       title: t("Quizlar", "Викторины"),
       desc: t("Bilimingni sinab ko‘r!", "Проверь свои знания!"),
       icon: "brain",
+      art: "quiz" as LearningWorld,
       color: "peach",
       href: "/quizzes",
       tag: t("O‘yna va o‘rgan", "Играй и учись"),
@@ -42,6 +48,7 @@ export function HomePage() {
       title: t("Bilim Daraxti", "Дерево знаний"),
       desc: t("Bilim bilan birga o‘sadi", "Растёт вместе со знаниями"),
       icon: "leaf",
+      art: "tree" as LearningWorld,
       color: "mint",
       href: "/rewards",
       tag: t("Yutuqlaring shu yerda", "Твои достижения здесь"),
@@ -53,6 +60,7 @@ export function HomePage() {
         "Маленький герой, большая миссия",
       ),
       icon: "rocket",
+      art: "space" as LearningWorld,
       color: "lilac",
       soon: true,
     },
@@ -60,6 +68,7 @@ export function HomePage() {
       title: "Zakovat Battles",
       desc: t("Do‘stlaring bilan bellash", "Соревнуйся с друзьями"),
       icon: "swords",
+      art: "battle" as LearningWorld,
       color: "pink",
       soon: true,
     },
@@ -67,6 +76,7 @@ export function HomePage() {
       title: t("Do‘kon", "Магазин"),
       desc: t("Yulduzlaringni quvonchga aylantir", "Преврати звёзды в радость"),
       icon: "shop",
+      art: "shop" as LearningWorld,
       color: "yellow",
       soon: true,
     },
@@ -84,9 +94,14 @@ export function HomePage() {
         </span>
       </div>
       <section className="greeting-card">
+        <img
+          className="greeting-landscape"
+          src="/images/storybook/samarkand-world.png"
+          alt=""
+        />
         <div className="greeting-copy">
           <span className="greeting-kicker">
-            {t("Kitob do‘sting bilan birga", "Вместе с книжным другом")}
+            {t("BILBILJON BILAN BIRGA", "ВМЕСТЕ С БИЛБИЛЬДЖОНОМ")}
           </span>
           <h1>
             {t("Salom,", "Привет,")} {profile.name}!{" "}
@@ -94,17 +109,17 @@ export function HomePage() {
           </h1>
           <p>
             {t(
-              "Men Bilbiljon — sizning kitob do‘stingizman. Keling, birga o‘qiymiz, o‘ynaymiz va yulduzlar yig‘amiz!",
-              "Я Билбильджон — твой книжный друг. Давай читать, играть и собирать звёзды вместе!",
+              "Bugun qaysi olamni kashf etamiz? Kitob o‘qiymiz, birga o‘ynaymiz va bilim bilan o‘samiz!",
+              "Какой мир откроем сегодня? Будем читать, играть и расти вместе со знаниями!",
             )}
           </p>
-          <PrimaryButton href="/library">
+          <PrimaryButton href="/library" className="greeting-cta">
             {t("Bugun nima o‘qiymiz?", "Что почитаем сегодня?")}
           </PrimaryButton>
         </div>
         <div className="greeting-art">
           <span className="speech-bubble">
-            {t("Seni ko‘rib xursandman!", "Рад тебя видеть!")}
+            {t("Keling, birga o‘rganamiz!", "Давай учиться вместе!")}
             <Heart size={13} fill="currentColor" />
           </span>
           <span className="decor-star star-one">✦</span>
@@ -134,9 +149,7 @@ export function HomePage() {
               const body = (
                 <>
                   <div className="feature-top">
-                    <span className={"feature-icon " + f.color}>
-                      <Icon name={f.icon} size={33} />
-                    </span>
+                    <WorldIllustration world={f.art} />
                     {f.soon ? (
                       <span className="soon-badge">
                         {t("Tez kunda", "Скоро")}
@@ -147,7 +160,13 @@ export function HomePage() {
                   </div>
                   <h3>{f.title}</h3>
                   <p>{f.desc}</p>
-                  {f.tag && <span className="feature-caption">{f.tag}</span>}
+                  <span className="feature-caption">
+                    {f.tag ??
+                      t(
+                        "Yangi sarguzasht tayyorlanmoqda",
+                        "Готовим новое приключение",
+                      )}
+                  </span>
                 </>
               );
               return f.href ? (

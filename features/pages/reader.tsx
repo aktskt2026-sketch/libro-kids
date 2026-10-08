@@ -11,6 +11,7 @@ import {
 } from "@/components/common";
 import { useApp } from "@/hooks/use-app";
 import { books, categoryNames } from "@/data/books";
+import { StoryIllustration } from "@/components/world-illustration";
 export function ReaderPage({ bookId }: { bookId: string }) {
   const { preferences, progress, completeBook, t } = useApp();
   const [page, setPage] = useState(0),
@@ -85,8 +86,8 @@ export function ReaderPage({ bookId }: { bookId: string }) {
             value={((page + 1) / book.pages.length) * 100}
             label={t("O‘qish jarayoni", "Прогресс чтения")}
           />
-          <div className={"reader-symbol " + book.color}>
-            <Icon name={book.icon} size={57} />
+          <div className={"reader-symbol illustrated-reader " + book.color}>
+            <StoryIllustration bookId={book.id} />
           </div>
           <p className="story-text">{book.pages[page][preferences.language]}</p>
           <div className="reader-navigation">
