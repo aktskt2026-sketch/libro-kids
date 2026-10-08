@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/app-link";
 import { ArrowLeft, ShieldCheck } from "lucide-react";
 import { Logo } from "@/components/common";
 import { useApp } from "@/hooks/use-app";

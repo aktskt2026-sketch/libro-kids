@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/app-link";
 import { ArrowRight, Check, Star } from "lucide-react";
 import { AppShell } from "@/layouts/app-shell";
 import { PageHeading, Icon, Mascot } from "@/components/common";

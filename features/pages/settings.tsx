@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/app-link";
+import { navigate } from "@/lib/navigation";
 import {
   Bell,
   ChevronRight,
@@ -28,7 +28,6 @@ export function SettingsPage() {
     t,
   } = useApp();
   const [modal, setModal] = useState<string | null>(null);
-  const router = useRouter();
   return (
     <AppShell>
       <PageHeading
@@ -151,8 +150,7 @@ export function SettingsPage() {
           <button
             className="logout-button"
             onClick={() => {
-              logout();
-              router.push("/welcome");
+              navigate("/welcome", logout);
             }}
           >
             <LogOut size={19} />

@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/app-link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Bell } from "lucide-react";
 import { useApp } from "@/hooks/use-app";

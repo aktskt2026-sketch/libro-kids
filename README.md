@@ -47,6 +47,8 @@ The root displays the product immediately. Onboarding can be opened from Setting
 
 All content and authentication are mocked. Profile and progress persist in browser storage on the current device. Every book has original short Uzbek and Russian sample stories. Quiz answers give feedback; book rereads and quiz replays cannot repeatedly farm points. Settings includes all eleven requested coming-soon cards and friendly modals.
 
+Application links use document navigation through `components/app-link.tsx`. This avoids a Vinext production RSC prefetch/navigation failure that prevented clicks from changing pages. Onboarding actions commit profile and preference changes before navigating through `lib/navigation.ts`, so device-local data survives the page load. Verify navigation against the production build, as the failure did not appear in the development server.
+
 ## Supabase next phase
 
 Read [the integration guide](docs/SUPABASE_INTEGRATION.md). Public configuration placeholders and async service contracts are prepared; no backend connection or SDK is active.

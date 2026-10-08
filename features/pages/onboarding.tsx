@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState, type FormEvent } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { navigate } from "@/lib/navigation";
+import Link from "@/components/app-link";
 import {
   Check,
   Eye,
@@ -67,7 +68,6 @@ export function LanguagePage() {
   useEffect(() => {
     if (ready) setSelected(preferences.language);
   }, [ready, preferences.language]);
-  const router = useRouter();
   return (
     <OnboardingShell step={2} back="/welcome">
       <section className="onboard-card language-card">
@@ -115,8 +115,7 @@ export function LanguagePage() {
         <PrimaryButton
           className="wide"
           onClick={() => {
-            setLanguage(selected);
-            router.push("/account");
+            navigate("/account", () => setLanguage(selected));
           }}
         >
           {selected === "uz" ? "Davom etish" : "Продолжить"}
@@ -137,12 +136,12 @@ export function AccountPage() {
   const [email, setLocalEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
-  const router = useRouter();
   function submit(e: FormEvent) {
     e.preventDefault();
-    setEmail(email.trim());
     setPassword("");
-    router.push(mode === "login" ? "/home" : "/child-setup");
+    navigate(mode === "login" ? "/home" : "/child-setup", () =>
+      setEmail(email.trim()),
+    );
   }
   return (
     <OnboardingShell step={3} back="/language">
@@ -248,7 +247,6 @@ export function ChildSetupPage() {
   );
   const [age, setAge] = useState(profile.age);
   const [gender, setGender] = useState<ChildProfile["gender"]>(profile.gender);
-  const router = useRouter();
   const search = useSearchParams();
   const edit = search?.get("edit") === "1";
   useEffect(() => {
@@ -261,8 +259,9 @@ export function ChildSetupPage() {
   function submit(e: FormEvent) {
     e.preventDefault();
     if (!name.trim()) return;
-    updateProfile({ name: name.trim(), age, gender });
-    router.push(edit ? "/profile" : "/home");
+    navigate(edit ? "/profile" : "/home", () =>
+      updateProfile({ name: name.trim(), age, gender }),
+    );
   }
   return (
     <OnboardingShell step={4} back={edit ? "/settings" : "/account"}>

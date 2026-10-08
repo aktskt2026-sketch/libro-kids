@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/app-link";
 import { Check, Clock, Star, ArrowRight } from "lucide-react";
 import { useApp } from "@/hooks/use-app";
 import { StoryIllustration } from "@/components/world-illustration";
