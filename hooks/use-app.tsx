@@ -19,6 +19,7 @@ type Context = AppState & {
   setLanguage: (l: Language) => void;
   updateProfile: (p: ChildProfile) => void;
   setEmail: (e: string) => void;
+  setParentAccount: (name: string, email: string) => void;
   toggleNotifications: () => void;
   completeBook: (id: string, reward: number) => void;
   completeQuiz: (id: string, score: number) => void;
@@ -60,6 +61,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setState((s) => ({ ...s, preferences: { ...s.preferences, language } })),
     updateProfile: (profile) => setState((s) => ({ ...s, profile })),
     setEmail: (parentEmail) => setState((s) => ({ ...s, parentEmail })),
+    setParentAccount: (parentName, parentEmail) =>
+      setState((s) => ({ ...s, parentName, parentEmail })),
     toggleNotifications: () =>
       setState((s) => ({
         ...s,
@@ -84,11 +87,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         progress: recordGameCompletion(s.progress, id, reward),
       })),
     logout: () => {
-      void learningRepository.clear();
-      setState({
-        ...structuredClone(initialState),
-        preferences: state.preferences,
-      });
+      setState((s) => ({ ...s, parentName: "", parentEmail: "" }));
     },
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

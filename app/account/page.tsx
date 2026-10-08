@@ -1,1 +1,1 @@
-export { AccountPage as default } from "@/features/pages/onboarding";
+export { AccountPage as default } from "@/features/pages/account";

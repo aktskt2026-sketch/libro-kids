@@ -1,7 +1,7 @@
 "use client";
 import Link from "@/components/app-link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Bell } from "lucide-react";
+import { ChevronDown, Bell, Users, UserPlus } from "lucide-react";
 import { useApp } from "@/hooks/use-app";
 import { Logo, Icon } from "@/components/common";
 import type { ReactNode } from "react";
@@ -14,7 +14,7 @@ const nav = [
 ];
 export function AppShell({ children }: { children: ReactNode }) {
   const path = usePathname() ?? "/";
-  const { profile, preferences, setLanguage, t } = useApp();
+  const { profile, preferences, parentEmail, setLanguage, t } = useApp();
   return (
     <>
       <header className="site-header">
@@ -43,6 +43,22 @@ export function AppShell({ children }: { children: ReactNode }) {
           </Link>
         </nav>
         <div className="header-actions">
+          <Link
+            href={parentEmail ? "/account" : "/register"}
+            className="header-account-entry"
+            aria-label={
+              parentEmail
+                ? t("Oila hisobi", "Семейный аккаунт")
+                : t("Ro‘yxatdan o‘tish", "Регистрация")
+            }
+          >
+            {parentEmail ? <Users size={18} /> : <UserPlus size={18} />}
+            <span>
+              {parentEmail
+                ? t("Oila hisobi", "Аккаунт семьи")
+                : t("Ro‘yxatdan o‘tish", "Регистрация")}
+            </span>
+          </Link>
           <button
             className="language-pill"
             onClick={() =>

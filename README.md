@@ -18,24 +18,30 @@ Development opens at the URL printed by the server (normally http://127.0.0.1:51
 
 ## Routes
 
-| Route         | Screen                                                       |
-| ------------- | ------------------------------------------------------------ |
-| / and /home   | Home with demo child profile                                 |
-| /welcome      | Splash and Bilbiljon welcome                                 |
-| /language     | Uzbek / Russian selection                                    |
-| /account      | Demo parent registration / login                             |
-| /child-setup  | Child setup; ?edit=1 edits existing profile                  |
-| /library      | Search, age and category filters                             |
-| /library/[id] | Page-by-page book reader                                     |
-| /quizzes      | Quiz selection                                               |
-| /quizzes/[id] | Five-question player, feedback and results                   |
-| /nature       | Illustrated nature game selection                            |
-| /nature/[id]  | Waste sorting, litter search and walking park adventure      |
-| /rewards      | Seven tree stages, daily reading goal and badges             |
-| /profile      | Stats, read books and best quiz results                      |
-| /settings     | Language, demo account, preferences and coming-soon features |
+| Route            | Screen                                                       |
+| ---------------- | ------------------------------------------------------------ |
+| / and /home      | Home with demo child profile                                 |
+| /welcome         | Splash and Bilbiljon welcome                                 |
+| /language        | Uzbek / Russian selection                                    |
+| /register        | Demo parent signup with field validation                     |
+| /login           | Demo parent login                                            |
+| /forgot-password | Demo recovery request and confirmation                       |
+| /account         | Family overview or signup for guests                         |
+| /account/ready   | Child-profile completion screen                              |
+| /child-setup     | Child setup; ?edit=1 edits existing profile                  |
+| /library         | Search, age and category filters                             |
+| /library/[id]    | Page-by-page book reader                                     |
+| /quizzes         | Quiz selection                                               |
+| /quizzes/[id]    | Five-question player, feedback and results                   |
+| /nature          | Illustrated nature game selection                            |
+| /nature/[id]     | Waste sorting, litter search and walking park adventure      |
+| /rewards         | Seven tree stages, daily reading goal and badges             |
+| /profile         | Stats, read books and best quiz results                      |
+| /settings        | Language, demo account, preferences and coming-soon features |
 
 The root displays the product immediately. Onboarding can be opened from Settings → Bilbiljon bilan tanishuv.
+
+Registration is accessible from the home header, family banner and Settings. The demo flow is `/register` → `/child-setup` → `/account/ready` → `/home`. Forms validate name, email, eight-character passwords, confirmation and parent/guardian acknowledgement; password visibility is optional. Login accepts valid sample credentials without verifying a real identity. Recovery shows a demo result and sends no email. Only the parent display name and email are saved locally; passwords are never stored. Signing out clears parent details while preserving child progress and device preferences. Existing saved profiles are migrated without resetting points.
 
 ## Architecture
 

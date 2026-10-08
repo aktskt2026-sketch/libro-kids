@@ -23,6 +23,7 @@ export const initialState: AppState = {
   },
   preferences: { language: "uz", notifications: true },
   parentEmail: "",
+  parentName: "",
 };
 const KEY = "libro-kids-demo-v1";
 function isState(p: unknown): p is AppState {
@@ -48,6 +49,8 @@ export const mockRepository: LearningRepository = {
       if (!isState(parsed)) return structuredClone(initialState);
       return {
         ...parsed,
+        parentName:
+          typeof parsed.parentName === "string" ? parsed.parentName : "",
         progress: {
           ...parsed.progress,
           completedGames: Array.isArray(parsed.progress.completedGames)

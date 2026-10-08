@@ -1,21 +1,14 @@
 "use client";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { navigate } from "@/lib/navigation";
 import Link from "@/components/app-link";
-import {
-  Check,
-  Eye,
-  EyeOff,
-  Mail,
-  LockKeyhole,
-  ShieldCheck,
-} from "lucide-react";
+import { UserRound } from "lucide-react";
 import { OnboardingShell } from "@/layouts/onboarding-shell";
 import { Mascot, PrimaryButton } from "@/components/common";
 import { useApp } from "@/hooks/use-app";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { FamilyAuthShell } from "@/layouts/family-auth-shell";
 import type { ChildProfile, Language } from "@/types";
 export function WelcomePage() {
   const { t } = useApp();
@@ -115,7 +108,7 @@ export function LanguagePage() {
         <PrimaryButton
           className="wide"
           onClick={() => {
-            navigate("/account", () => setLanguage(selected));
+            navigate("/register", () => setLanguage(selected));
           }}
         >
           {selected === "uz" ? "Davom etish" : "Продолжить"}
@@ -130,116 +123,6 @@ export function LanguagePage() {
     </OnboardingShell>
   );
 }
-export function AccountPage() {
-  const { setEmail, t } = useApp();
-  const [mode, setMode] = useState("register");
-  const [email, setLocalEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [show, setShow] = useState(false);
-  function submit(e: FormEvent) {
-    e.preventDefault();
-    setPassword("");
-    navigate(mode === "login" ? "/home" : "/child-setup", () =>
-      setEmail(email.trim()),
-    );
-  }
-  return (
-    <OnboardingShell step={3} back="/language">
-      <div className="helper-bubble">
-        {t(
-          "Bu sizning hisobingiz — farzandingizning profili va yutuqlarini boshqarish uchun.",
-          "Это ваш аккаунт — для управления профилем и достижениями ребёнка.",
-        )}
-      </div>
-      <section className="onboard-card account-card">
-        <span className="icon-bubble green">
-          <ShieldCheck size={28} />
-        </span>
-        <h1>{t("Ota-ona hisobi", "Аккаунт родителя")}</h1>
-        <p>
-          {t(
-            "Farzandingizning bilim olamiga ilk qadam",
-            "Первый шаг в мир знаний вашего ребёнка",
-          )}
-        </p>
-        <Tabs value={mode} onValueChange={setMode}>
-          <TabsList className="account-tabs">
-            <TabsTrigger value="register">
-              {t("Ro‘yxatdan o‘tish", "Регистрация")}
-            </TabsTrigger>
-            <TabsTrigger value="login">{t("Kirish", "Вход")}</TabsTrigger>
-          </TabsList>
-        </Tabs>
-        <form onSubmit={submit}>
-          <label className="field-label" htmlFor="email">
-            Email
-          </label>
-          <div className="input-wrap">
-            <Mail size={19} />
-            <input
-              id="email"
-              type="email"
-              placeholder="siz@example.com"
-              required
-              value={email}
-              onChange={(e) => setLocalEmail(e.target.value)}
-              autoComplete="email"
-              maxLength={150}
-            />
-          </div>
-          <label className="field-label" htmlFor="password">
-            {t("Parol", "Пароль")}
-          </label>
-          <div className="input-wrap">
-            <LockKeyhole size={19} />
-            <input
-              id="password"
-              type={show ? "text" : "password"}
-              placeholder={t("Kamida 6 ta belgi", "Минимум 6 символов")}
-              required
-              minLength={6}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete={
-                mode === "register" ? "new-password" : "current-password"
-              }
-            />
-            <button
-              type="button"
-              onClick={() => setShow(!show)}
-              aria-label={
-                show
-                  ? t("Parolni yashirish", "Скрыть пароль")
-                  : t("Parolni ko‘rsatish", "Показать пароль")
-              }
-            >
-              {show ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
-          </div>
-          <div className="demo-notice">
-            {t(
-              "Sinov rejimi: namuna email va paroldan foydalaning. Haqiqiy hisob yaratilmaydi.",
-              "Демо: используйте вымышленные email и пароль. Настоящий аккаунт не создаётся.",
-            )}
-          </div>
-          <PrimaryButton className="wide" type="submit">
-            {mode === "register"
-              ? t("Ro‘yxatdan o‘tish", "Зарегистрироваться")
-              : t("Kirish", "Войти")}
-          </PrimaryButton>
-        </form>
-        <button
-          className="text-button"
-          onClick={() => setMode(mode === "register" ? "login" : "register")}
-        >
-          {mode === "register"
-            ? t("Hisobingiz bormi? Kirish", "Уже есть аккаунт? Войти")
-            : t("Yangi hisob yaratish", "Создать аккаунт")}
-        </button>
-      </section>
-    </OnboardingShell>
-  );
-}
 export function ChildSetupPage() {
   const { profile, updateProfile, t, ready } = useApp();
   const [name, setName] = useState(
@@ -249,9 +132,11 @@ export function ChildSetupPage() {
   const [gender, setGender] = useState<ChildProfile["gender"]>(profile.gender);
   const search = useSearchParams();
   const edit = search?.get("edit") === "1";
+  const initialized = useRef(false);
   useEffect(() => {
-    if (ready && edit) {
-      setName(profile.name);
+    if (ready && !initialized.current) {
+      initialized.current = true;
+      setName(edit || profile.name !== "Azizbek" ? profile.name : "");
       setAge(profile.age);
       setGender(profile.gender);
     }
@@ -259,28 +144,22 @@ export function ChildSetupPage() {
   function submit(e: FormEvent) {
     e.preventDefault();
     if (!name.trim()) return;
-    navigate(edit ? "/profile" : "/home", () =>
+    navigate(edit ? "/profile" : "/account/ready", () =>
       updateProfile({ name: name.trim(), age, gender }),
     );
   }
   return (
-    <OnboardingShell step={4} back={edit ? "/settings" : "/account"}>
-      <div className="child-helper">
-        <Mascot />
-        <div className="helper-bubble">
-          {t(
-            "Men bilan tanishaylik! Ismingiz nima?",
-            "Давай познакомимся! Как тебя зовут?",
-          )}
-        </div>
-      </div>
-      <section className="onboard-card child-card">
+    <FamilyAuthShell stage={edit ? undefined : 2}>
+      <span className="family-form-icon">
+        <UserRound size={26} />
+      </span>
+      <div className="family-child-form">
         <h1>
           {edit
             ? t("Profilni tahrirlash", "Изменить профиль")
             : t("Kichik kitobxon profili", "Профиль маленького читателя")}
         </h1>
-        <p>
+        <p className="family-form-description">
           {t(
             "Sarguzashtimiz sen bilan boshlanadi!",
             "Наше приключение начинается с тебя!",
@@ -343,11 +222,21 @@ export function ChildSetupPage() {
               </label>
             ))}
           </RadioGroup>
-          <PrimaryButton className="wide" type="submit" disabled={!name.trim()}>
+          <PrimaryButton
+            className="wide"
+            type="submit"
+            disabled={!ready || !name.trim()}
+          >
             {edit ? t("Saqlash", "Сохранить") : t("Davom etish", "Продолжить")}
           </PrimaryButton>
         </form>
-      </section>
-    </OnboardingShell>
+      </div>
+      <Link
+        href={edit ? "/settings" : "/register"}
+        className="family-profile-link"
+      >
+        {t("Orqaga qaytish", "Назад")}
+      </Link>
+    </FamilyAuthShell>
   );
 }

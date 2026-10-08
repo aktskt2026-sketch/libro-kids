@@ -24,6 +24,7 @@ export interface AppState {
     notifications: boolean;
   };
   parentEmail: string;
+  parentName: string;
 }
 export interface Book {
   id: string;

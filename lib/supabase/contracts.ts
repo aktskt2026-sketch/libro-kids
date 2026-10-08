@@ -11,8 +11,13 @@ export interface ParentSession {
   email: string;
 }
 export interface ParentAuthService {
-  signUp(email: string, password: string): Promise<ParentSession | null>;
+  signUp(
+    email: string,
+    password: string,
+    displayName?: string,
+  ): Promise<ParentSession | null>;
   signIn(email: string, password: string): Promise<ParentSession>;
+  requestPasswordReset(email: string, redirectTo: string): Promise<void>;
   signOut(): Promise<void>;
 }
 export interface ContentService {

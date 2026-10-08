@@ -2,7 +2,7 @@
 import Link from "@/components/app-link";
 import { AnimatedBilbiljon } from "@/components/animated-bilbiljon";
 import { useState } from "react";
-import { ArrowRight, Check, Heart, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Heart, Sparkles, Users } from "lucide-react";
 import { AppShell } from "@/layouts/app-shell";
 import { useApp } from "@/hooks/use-app";
 import {
@@ -20,7 +20,7 @@ import {
   type LearningWorld,
 } from "@/components/world-illustration";
 export function HomePage() {
-  const { profile, progress, preferences, t } = useApp();
+  const { profile, progress, preferences, parentEmail, ready, t } = useApp();
   const [modal, setModal] = useState<string | null>(null);
   const [understood, setUnderstood] = useState(false);
   const level = getTreeLevel(progress.points),
@@ -119,6 +119,35 @@ export function HomePage() {
         <AnimatedBilbiljon />
       </section>
       <Stats />
+      {ready && !parentEmail && (
+        <section className="family-join-strip">
+          <span className="family-join-icon">
+            <Users size={24} />
+          </span>
+          <div>
+            <h2>
+              {t(
+                "Farzandingiz uchun oila hisobi",
+                "Семейный аккаунт для ребёнка",
+              )}
+            </h2>
+            <p>
+              {t(
+                "Profilini yarating va birga o‘rganing.",
+                "Создайте профиль и учитесь вместе.",
+              )}
+            </p>
+          </div>
+          <div className="family-join-actions">
+            <PrimaryButton href="/register">
+              {t("Ro‘yxatdan o‘tish", "Регистрация")}
+            </PrimaryButton>
+            <Link href="/login">
+              {t("Hisobim bor · Kirish", "Уже есть аккаунт · Войти")}
+            </Link>
+          </div>
+        </section>
+      )}
       <div className="home-columns">
         <div className="activities">
           <div className="section-heading">

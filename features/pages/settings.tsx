@@ -117,8 +117,15 @@ export function SettingsPage() {
           <Link className="setting-link" href="/account">
             <Mail size={22} />
             <div>
-              <strong>{t("Ota-ona hisobi", "Аккаунт родителя")}</strong>
-              <small>{parentEmail || t("Sinov hisobi", "Демо-аккаунт")}</small>
+              <strong>
+                {parentEmail
+                  ? t("Ota-ona hisobi", "Аккаунт родителя")
+                  : t("Ro‘yxatdan o‘tish", "Регистрация")}
+              </strong>
+              <small>
+                {parentEmail ||
+                  t("Oila hisobini yaratish", "Создать семейный аккаунт")}
+              </small>
             </div>
             <ChevronRight size={19} />
           </Link>
@@ -147,15 +154,32 @@ export function SettingsPage() {
             </div>
             <ChevronRight size={19} />
           </Link>
-          <button
-            className="logout-button"
-            onClick={() => {
-              navigate("/welcome", logout);
-            }}
-          >
-            <LogOut size={19} />
-            {t("Sinov hisobidan chiqish", "Выйти из демо-аккаунта")}
-          </button>
+          {!parentEmail && (
+            <Link className="setting-link" href="/login">
+              <UserRound size={22} />
+              <div>
+                <strong>{t("Hisobga kirish", "Войти в аккаунт")}</strong>
+                <small>
+                  {t(
+                    "Hisobingiz bo‘lsa, davom eting",
+                    "Продолжить с аккаунтом",
+                  )}
+                </small>
+              </div>
+              <ChevronRight size={19} />
+            </Link>
+          )}
+          {parentEmail && (
+            <button
+              className="logout-button"
+              onClick={() => {
+                navigate("/login", logout);
+              }}
+            >
+              <LogOut size={19} />
+              {t("Sinov hisobidan chiqish", "Выйти из демо-аккаунта")}
+            </button>
+          )}
         </section>
       </div>
       <section id="coming-soon" className="coming-soon-section">
