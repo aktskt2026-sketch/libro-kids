@@ -3,6 +3,7 @@ import "./globals.css";
 import "./storybook.css";
 import "./nature.css";
 import "./park-game.css";
+import "./mascot-animation.css";
 import { AppProvider } from "@/hooks/use-app";
 export const metadata: Metadata = {
   title: "Libro-Kids · Bilim bilan o‘sing!",

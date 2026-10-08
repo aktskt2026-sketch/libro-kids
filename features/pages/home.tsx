@@ -1,5 +1,6 @@
 "use client";
 import Link from "@/components/app-link";
+import { AnimatedBilbiljon } from "@/components/animated-bilbiljon";
 import { useState } from "react";
 import { ArrowRight, Check, Heart, Sparkles } from "lucide-react";
 import { AppShell } from "@/layouts/app-shell";
@@ -115,15 +116,7 @@ export function HomePage() {
             {t("Bugun nima o‘qiymiz?", "Что почитаем сегодня?")}
           </PrimaryButton>
         </div>
-        <div className="greeting-art">
-          <span className="speech-bubble">
-            {t("Keling, birga o‘rganamiz!", "Давай учиться вместе!")}
-            <Heart size={13} fill="currentColor" />
-          </span>
-          <span className="decor-star star-one">✦</span>
-          <span className="decor-star star-two">✦</span>
-          <Mascot />
-        </div>
+        <AnimatedBilbiljon />
       </section>
       <Stats />
       <div className="home-columns">
