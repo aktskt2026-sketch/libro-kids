@@ -33,6 +33,7 @@ import {
   Moon,
   Feather,
   Lightbulb,
+  Target,
 } from "lucide-react";
 import { useApp } from "@/hooks/use-app";
 import {
@@ -75,6 +76,7 @@ const icons = {
   moon: Moon,
   feather: Feather,
   bulb: Lightbulb,
+  target: Target,
 };
 export function Icon({
   name,
@@ -278,8 +280,8 @@ export function FriendlyModal({
         <DialogDescription className="modal-description">
           {points
             ? t(
-                "Kitobni oxirigacha o‘qing: +5 ball. Quizda har bir to‘g‘ri javob: +2 ball. Ballaringiz Bilim Daraxtini o‘stiradi! Bir kitob uchun ball bir marta beriladi. Takroriy quizda faqat yaxshilangan natija uchun ball olasiz.",
-                "Прочитайте книгу: +5 баллов. Каждый верный ответ: +2 балла. Баллы растят Дерево знаний! За книгу баллы начисляются один раз. Повторная викторина даёт баллы только за улучшение результата.",
+                "Kitob: +5, to‘g‘ri quiz javobi: +2, kunlik maqsad: +3, odob darsi: +2, tabiat o‘yini: +5 ball. Kitob va o‘yin mukofoti bir marta; kunlik bonuslar kuniga bir marta beriladi. Takroriy quizda faqat yaxshilangan natija uchun ball olasiz.",
+                "Книга: +5, верный ответ: +2, ежедневная цель: +3, урок доброты: +2, игра о природе: +5. За книгу и игру награда однократная, ежедневные бонусы — раз в день. Повтор викторины даёт баллы только за улучшение.",
               )
             : t(
                 "Bilbiljon jamoasi bu bo‘lim ustida ishlayapti. Tez orada siz uchun tayyor bo‘ladi!",

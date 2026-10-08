@@ -11,12 +11,14 @@ import {
 } from "@/components/common";
 import { useApp } from "@/hooks/use-app";
 import { quizzes, quizSources } from "@/data/quizzes";
+import { POINT_REWARDS } from "@/data/point-rules";
 export function QuizPlayerPage({ quizId }: { quizId: string }) {
-  const { preferences, completeQuiz, t } = useApp();
+  const { preferences, progress, completeQuiz, ready, t } = useApp();
   const [index, setIndex] = useState(0),
     [answer, setAnswer] = useState<number | null>(null),
     [score, setScore] = useState(0),
     [finished, setFinished] = useState(false);
+  const [earned, setEarned] = useState(0);
   const quiz = quizzes.find((q) => q.id === quizId);
   if (!quiz)
     return (
@@ -31,12 +33,13 @@ export function QuizPlayerPage({ quizId }: { quizId: string }) {
   function select(i: number) {
     if (answer !== null) return;
     setAnswer(i);
-    if (i === question.correct) setScore((s) => s + 2);
+    if (i === question.correct) setScore((s) => s + POINT_REWARDS.quizAnswer);
   }
   function next() {
-    if (answer === null) return;
+    if (answer === null || !ready) return;
     if (index === quiz!.questions.length - 1) {
       completeQuiz(quiz!.id, score);
+      setEarned(Math.max(0, score - (progress.quizScores[quiz!.id] ?? 0)));
       setFinished(true);
     } else {
       setIndex((i) => i + 1);
@@ -47,6 +50,7 @@ export function QuizPlayerPage({ quizId }: { quizId: string }) {
     setIndex(0);
     setAnswer(null);
     setScore(0);
+    setEarned(0);
     setFinished(false);
   }
   return (
@@ -77,14 +81,15 @@ export function QuizPlayerPage({ quizId }: { quizId: string }) {
               <Star
                 key={i}
                 size={32}
-                className={i < score / 2 ? "earned" : ""}
+                className={i < score / POINT_REWARDS.quizAnswer ? "earned" : ""}
               />
             ))}
           </div>
           <div className="earned-points">
-            {score / 2} / 5 {t("to‘g‘ri javob", "верных ответов")}
+            {score / POINT_REWARDS.quizAnswer} / {quiz.questions.length}{" "}
+            {t("to‘g‘ri javob", "верных ответов")}
             <span>
-              +{score} {t("ball", "баллов")}
+              +{earned} {t("ball qo‘shildi", "баллов начислено")}
             </span>
           </div>
           <p className="result-note">
@@ -175,7 +180,7 @@ export function QuizPlayerPage({ quizId }: { quizId: string }) {
             </div>
           )}
           <div className="quiz-next">
-            <PrimaryButton onClick={next} disabled={answer === null}>
+            <PrimaryButton onClick={next} disabled={answer === null || !ready}>
               {index === quiz.questions.length - 1
                 ? t("Natijani ko‘rish", "Посмотреть результат")
                 : t("Keyingi savol", "Следующий вопрос")}

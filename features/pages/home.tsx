@@ -13,19 +13,29 @@ import {
   ProgressBar,
   Stats,
 } from "@/components/common";
-import { wisdomItems } from "@/data/wisdom";
+import { getDailyWisdom } from "@/data/wisdom";
+import { POINT_REWARDS } from "@/data/point-rules";
+import { dateKey } from "@/lib/progress";
 import { getTreeLevel, treeLevels } from "@/data/rewards";
 import {
   WorldIllustration,
   type LearningWorld,
 } from "@/components/world-illustration";
 export function HomePage() {
-  const { profile, progress, preferences, parentEmail, ready, t } = useApp();
+  const {
+    profile,
+    progress,
+    preferences,
+    parentEmail,
+    ready,
+    completeWisdom,
+    t,
+  } = useApp();
   const [modal, setModal] = useState<string | null>(null);
-  const [understood, setUnderstood] = useState(false);
+  const understood = progress.wisdomDates.includes(dateKey(new Date()));
   const level = getTreeLevel(progress.points),
     next = treeLevels[level + 1],
-    wisdom = wisdomItems[0];
+    wisdom = getDailyWisdom();
   const features = [
     {
       title: t("Kitoblarim", "Мои книги"),
@@ -208,7 +218,7 @@ export function HomePage() {
               );
             })}
           </div>
-          <button className="points-info" onClick={() => setModal("points")}>
+          <Link className="points-info" href="/points">
             <span className="icon-bubble yellow">
               <Icon name="star" size={24} />
             </span>
@@ -227,10 +237,10 @@ export function HomePage() {
               </small>
             </span>
             <ArrowRight size={20} />
-          </button>
+          </Link>
         </div>
         <aside className="home-aside">
-          <section className="wisdom-card">
+          <section className="wisdom-card" id="wisdom">
             <div className="wisdom-header">
               <span className="mentor-avatar">
                 <Mascot mentor />
@@ -252,13 +262,19 @@ export function HomePage() {
             <p>{wisdom.text[preferences.language]}</p>
             <button
               className={"wisdom-button " + (understood ? "understood" : "")}
-              onClick={() => setUnderstood(!understood)}
+              onClick={completeWisdom}
+              disabled={!ready || understood}
             >
               {understood ? <Check size={18} /> : <Heart size={18} />}{" "}
               {understood
-                ? t("Barakalla, bilimdon!", "Молодец, знаток!")
+                ? t("Barakalla! +2 ball olindi", "Молодец! +2 балла получены")
                 : t("Tushundim, rahmat!", "Понял, спасибо!")}
             </button>
+            <p className="wisdom-reward-note">
+              {understood
+                ? t("Bugungi odob darsi bajarildi", "Сегодняшний урок выполнен")
+                : `+${POINT_REWARDS.wisdom} ${t("ball · kuniga bir marta", "балла · раз в день")}`}
+            </p>
           </section>
           <section className="tree-preview">
             <div className="tree-preview-copy">

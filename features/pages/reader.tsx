@@ -12,10 +12,13 @@ import {
 import { useApp } from "@/hooks/use-app";
 import { books, categoryNames } from "@/data/books";
 import { StoryIllustration } from "@/components/world-illustration";
+import { POINT_REWARDS } from "@/data/point-rules";
+import { dateKey } from "@/lib/progress";
 export function ReaderPage({ bookId }: { bookId: string }) {
-  const { preferences, progress, completeBook, t } = useApp();
+  const { preferences, progress, completeBook, ready, t } = useApp();
   const [page, setPage] = useState(0),
     [finished, setFinished] = useState(false);
+  const [earned, setEarned] = useState({ book: 0, daily: 0 });
   const book = books.find((b) => b.id === bookId);
   if (!book)
     return (
@@ -28,7 +31,12 @@ export function ReaderPage({ bookId }: { bookId: string }) {
     );
   const completed = progress.completedBooks.includes(book.id);
   function finish() {
-    if (book) {
+    if (book && ready) {
+      const goalDone = progress.dailyGoalDates.includes(dateKey(new Date()));
+      setEarned({
+        book: completed ? 0 : book.reward,
+        daily: goalDone ? 0 : POINT_REWARDS.dailyGoal,
+      });
       completeBook(book.id, book.reward);
       setFinished(true);
     }
@@ -60,8 +68,23 @@ export function ReaderPage({ bookId }: { bookId: string }) {
           </p>
           <div className="earned-points">
             <Check size={22} />
-            {t("Kitob yakunlandi", "Книга прочитана")}
+            {earned.book + earned.daily > 0
+              ? `+${earned.book + earned.daily} ${t("ball qo‘shildi", "баллов начислено")}`
+              : t("Kitob yakunlandi", "Книга прочитана")}
           </div>
+          <p className="reading-reward-breakdown">
+            {earned.daily > 0
+              ? t(
+                  `Kunlik maqsad +${earned.daily}${earned.book ? ` · Kitob +${earned.book}` : ""}`,
+                  `Ежедневная цель +${earned.daily}${earned.book ? ` · Книга +${earned.book}` : ""}`,
+                )
+              : earned.book
+                ? t("Yangi kitob uchun mukofot", "Награда за новую книгу")
+                : t(
+                    "Bu kitob va bugungi maqsad avval bajarilgan",
+                    "Книга и сегодняшняя цель уже завершены",
+                  )}
+          </p>
           <PrimaryButton href="/rewards">
             {t("Daraxtimni ko‘rish", "Посмотреть дерево")}
           </PrimaryButton>
@@ -104,7 +127,7 @@ export function ReaderPage({ bookId }: { bookId: string }) {
                 {t("Keyingi sahifa", "Следующая страница")}
               </PrimaryButton>
             ) : (
-              <PrimaryButton onClick={finish}>
+              <PrimaryButton onClick={finish} disabled={!ready}>
                 {t("O‘qib bo‘ldim!", "Я прочитал!")}
               </PrimaryButton>
             )}

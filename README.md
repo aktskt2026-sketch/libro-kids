@@ -36,6 +36,7 @@ Development opens at the URL printed by the server (normally http://127.0.0.1:51
 | /nature          | Illustrated nature game selection                            |
 | /nature/[id]     | Waste sorting, litter search and walking park adventure      |
 | /rewards         | Seven tree stages, daily reading goal and badges             |
+| /points          | Point criteria, daily bonuses and one-time reward limits     |
 | /profile         | Stats, read books and best quiz results                      |
 | /settings        | Language, demo account, preferences and coming-soon features |
 
@@ -52,6 +53,8 @@ Registration is accessible from the home header, family banner and Settings. The
 - `hooks/`: app state and optional browser tools.
 - `lib/`: storage adapter, deterministic award rules and future integration boundaries.
 - `types/`: shared domain models.
+
+Point criteria are available at `/points`, from Home and Rewards. A new book earns five points; the first completed book each calendar day earns a separate three-point bonus, including rereads. The home wisdom lesson rotates daily and awards two points once per day. Every correct quiz answer is worth two points; only improvement over the previous best is added on replay. Each nature game earns five profile points once. These values share `data/point-rules.ts`. Daily claims persist across reloads, and older saved reading dates are preserved without retroactive points.
 
 All content and authentication are mocked. Profile and progress persist in browser storage on the current device. Every book has original short Uzbek and Russian sample stories. Quiz answers give feedback; book rereads and quiz replays cannot repeatedly farm points. Settings includes all eleven requested coming-soon cards and friendly modals.
 

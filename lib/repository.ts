@@ -20,6 +20,8 @@ export const initialState: AppState = {
     quizScores: {},
     completedGames: [],
     readingDates: demoDates,
+    dailyGoalDates: demoDates,
+    wisdomDates: [],
   },
   preferences: { language: "uz", notifications: true },
   parentEmail: "",
@@ -53,6 +55,16 @@ export const mockRepository: LearningRepository = {
           typeof parsed.parentName === "string" ? parsed.parentName : "",
         progress: {
           ...parsed.progress,
+          dailyGoalDates: Array.isArray(parsed.progress.dailyGoalDates)
+            ? parsed.progress.dailyGoalDates.filter(
+                (day) => typeof day === "string",
+              )
+            : [...parsed.progress.readingDates],
+          wisdomDates: Array.isArray(parsed.progress.wisdomDates)
+            ? parsed.progress.wisdomDates.filter(
+                (day) => typeof day === "string",
+              )
+            : [],
           completedGames: Array.isArray(parsed.progress.completedGames)
             ? parsed.progress.completedGames.filter(
                 (id) => typeof id === "string",

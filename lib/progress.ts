@@ -1,4 +1,5 @@
 import type { ProgressState } from "@/types";
+import { POINT_REWARDS } from "../data/point-rules.ts";
 export function dateKey(date: Date): string {
   return (
     date.getFullYear() +
@@ -19,9 +20,16 @@ export function recordBookRead(
   yesterday.setDate(date.getDate() - 1);
   const newDay = !progress.readingDates.includes(today);
   const newBook = !progress.completedBooks.includes(id);
+  // Older profiles already fulfilled their reading days; never back-award them.
+  const goalDates = progress.dailyGoalDates ?? progress.readingDates;
+  const newGoal = !goalDates.includes(today);
   return {
     ...progress,
-    points: progress.points + (newBook ? reward : 0),
+    points:
+      progress.points +
+      (newBook ? reward : 0) +
+      (newGoal ? POINT_REWARDS.dailyGoal : 0),
+    dailyGoalDates: newGoal ? [...goalDates, today] : goalDates,
     completedBooks: newBook
       ? [...progress.completedBooks, id]
       : progress.completedBooks,
@@ -33,6 +41,19 @@ export function recordBookRead(
         ? progress.streak + 1
         : 1
       : progress.streak,
+  };
+}
+export function recordWisdomLesson(
+  progress: ProgressState,
+  date = new Date(),
+): ProgressState {
+  const today = dateKey(date);
+  const days = progress.wisdomDates ?? [];
+  if (days.includes(today)) return progress;
+  return {
+    ...progress,
+    points: progress.points + POINT_REWARDS.wisdom,
+    wisdomDates: [...days, today],
   };
 }
 export function recordQuizScore(

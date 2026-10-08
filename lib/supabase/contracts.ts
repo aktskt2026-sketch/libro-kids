@@ -54,5 +54,9 @@ export interface ProgressService {
     gameId: string,
     actions: NatureGameAction[],
   ): Promise<ProgressState>;
+  completeWisdomLesson(
+    childId: string,
+    lessonId: string,
+  ): Promise<ProgressState>;
 }
 /** Future server award logic must derive rewards from catalog data, never trust a client score. */

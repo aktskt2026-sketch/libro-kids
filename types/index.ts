@@ -15,6 +15,8 @@ export interface ProgressState {
   quizScores: Record<string, number>;
   completedGames: string[];
   readingDates: string[];
+  dailyGoalDates: string[];
+  wisdomDates: string[];
 }
 export interface AppState {
   profile: ChildProfile;

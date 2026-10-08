@@ -12,6 +12,7 @@ import {
   recordBookRead,
   recordQuizScore,
   recordGameCompletion,
+  recordWisdomLesson,
 } from "@/lib/progress";
 type Context = AppState & {
   ready: boolean;
@@ -24,6 +25,7 @@ type Context = AppState & {
   completeBook: (id: string, reward: number) => void;
   completeQuiz: (id: string, score: number) => void;
   completeGame: (id: string, reward: number) => void;
+  completeWisdom: () => void;
   logout: () => void;
 };
 const AppContext = createContext<Context | null>(null);
@@ -86,6 +88,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         ...s,
         progress: recordGameCompletion(s.progress, id, reward),
       })),
+    completeWisdom: () =>
+      setState((s) => ({ ...s, progress: recordWisdomLesson(s.progress) })),
     logout: () => {
       setState((s) => ({ ...s, parentName: "", parentEmail: "" }));
     },

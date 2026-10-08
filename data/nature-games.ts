@@ -1,3 +1,4 @@
+import { POINT_REWARDS } from "@/data/point-rules";
 import type { Localized, NatureGame } from "@/types";
 
 export const natureGames: NatureGame[] = [
@@ -9,7 +10,7 @@ export const natureGames: NatureGame[] = [
       ru: "Выбери героя, собери мусор в парке и отнеси его в контейнер!",
     },
     color: "sky",
-    reward: 5,
+    reward: POINT_REWARDS.natureGame,
   },
   {
     id: "sort",
@@ -19,7 +20,7 @@ export const natureGames: NatureGame[] = [
       ru: "Найди подходящий контейнер для каждого предмета. Помоги нашей планете!",
     },
     color: "lilac",
-    reward: 5,
+    reward: POINT_REWARDS.natureGame,
   },
   {
     id: "garden",
@@ -29,7 +30,7 @@ export const natureGames: NatureGame[] = [
       ru: "Найди и собери мусор в зелёном парке. Бабочки скажут тебе спасибо!",
     },
     color: "mint",
-    reward: 5,
+    reward: POINT_REWARDS.natureGame,
   },
 ];
 

@@ -14,3 +14,9 @@ export const wisdomItems = [
     },
   },
 ];
+export function getDailyWisdom(date = new Date()) {
+  const day = Math.floor(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000,
+  );
+  return wisdomItems[day % wisdomItems.length];
+}

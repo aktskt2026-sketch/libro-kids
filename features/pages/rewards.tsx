@@ -1,5 +1,7 @@
 "use client";
 import { dateKey } from "@/lib/progress";
+import Link from "@/components/app-link";
+import { POINT_REWARDS } from "@/data/point-rules";
 import { AppShell } from "@/layouts/app-shell";
 import {
   PageHeading,
@@ -30,6 +32,23 @@ export function RewardsPage() {
           "Твоё дерево растёт с каждой прочитанной книгой и верным ответом.",
         )}
       />
+      <Link className="points-guide-link" href="/points">
+        <span className="points-guide-link-icon">
+          <Star size={22} />
+        </span>
+        <div>
+          <strong>{t("Ball mezonlari", "Правила начисления баллов")}</strong>
+          <small>
+            {t(
+              "Qanday ball yig‘iladi va ular nima uchun kerak?",
+              "Как получать баллы и для чего они нужны?",
+            )}
+          </small>
+        </div>
+        <span className="points-guide-link-label">
+          {t("Mezonlarni ko‘rish", "Посмотреть правила")}
+        </span>
+      </Link>
       <section className="rewards-hero">
         <div className="rewards-tree">
           <span className="tree-owner">
@@ -142,6 +161,10 @@ export function RewardsPage() {
                   "Сегодня прочитаем одну книгу до конца.",
                 )}
           </p>
+          <small className="daily-goal-reward">
+            +{POINT_REWARDS.dailyGoal}{" "}
+            {t("ball · kuniga bir marta", "балла · раз в день")}
+          </small>
         </div>
         <span className="daily-goal-count">
           {readToday ? <Check size={20} /> : "0 / 1"}
