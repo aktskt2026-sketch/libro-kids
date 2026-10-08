@@ -1,12 +1,36 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { recordBookRead, recordQuizScore } from "../lib/progress.ts";
+import {
+  recordBookRead,
+  recordQuizScore,
+  recordGameCompletion,
+} from "../lib/progress.ts";
 const baseline = () => ({
   points: 35,
   streak: 3,
   completedBooks: ["old"],
   quizScores: {},
+  completedGames: [],
   readingDates: ["2026-10-06"],
+});
+test("nature games reward each completion once without changing reading or quizzes", () => {
+  const first = recordGameCompletion(baseline(), "sort", 5);
+  const replay = recordGameCompletion(first, "sort", 5);
+  const second = recordGameCompletion(replay, "garden", 5);
+  assert.equal(first.points, 40);
+  assert.equal(replay.points, 40);
+  assert.equal(second.points, 45);
+  assert.deepEqual(second.completedGames, ["sort", "garden"]);
+  assert.equal(second.streak, baseline().streak);
+  assert.deepEqual(second.quizScores, {});
+  assert.deepEqual(second.readingDates, baseline().readingDates);
+});
+test("nature completion supports progress saved before games existed", () => {
+  const { completedGames, ...legacy } = baseline();
+  const completed = recordGameCompletion(legacy, "garden", 5);
+  assert.equal(completed.points, 40);
+  assert.deepEqual(completed.completedGames, ["garden"]);
+  assert.deepEqual(legacy.completedGames, undefined);
 });
 test("new book rewards once; rereading still marks daily reading", () => {
   const first = recordBookRead(baseline(), "new", 5, new Date(2026, 9, 7));

@@ -13,6 +13,7 @@ import { useApp } from "@/hooks/use-app";
 import { getTreeLevel, treeLevels } from "@/data/rewards";
 import { books } from "@/data/books";
 import { quizzes } from "@/data/quizzes";
+import { natureGames } from "@/data/nature-games";
 export function ProfilePage() {
   const { profile, progress, preferences, t } = useApp();
   const level = treeLevels[getTreeLevel(progress.points)];
@@ -144,6 +145,40 @@ export function ProfilePage() {
           )}
         </section>
       </div>
+      <section className="history-card nature-profile-history">
+        <h2>
+          <Icon name="leaf" size={23} />
+          {t("Tabiatdagi yutuqlarim", "Мои достижения в природе")}
+        </h2>
+        {progress.completedGames.map((id) => {
+          const game = natureGames.find((game) => game.id === id);
+          return game ? (
+            <Link className="history-item" href={`/nature/${id}`} key={id}>
+              <span className="icon-bubble mint">
+                <Icon name="leaf" size={24} />
+              </span>
+              <div>
+                <strong>{game.title[preferences.language]}</strong>
+                <small>
+                  {t("Tabiatning kichik do‘sti", "Маленький друг природы")}
+                </small>
+              </div>
+              <Check size={19} />
+            </Link>
+          ) : null;
+        })}
+        {!progress.completedGames.length && (
+          <p className="history-empty">
+            {t(
+              "Birinchi tabiat o‘yiningni birga o‘ynaymizmi?",
+              "Сыграем в твою первую игру о природе?",
+            )}
+          </p>
+        )}
+        <Link className="text-button" href="/nature">
+          {t("Tabiat o‘yinlariga o‘tish", "К играм о природе")}
+        </Link>
+      </section>
     </AppShell>
   );
 }

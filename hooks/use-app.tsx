@@ -8,7 +8,11 @@ import {
 } from "react";
 import type { AppState, ChildProfile, Language } from "@/types";
 import { initialState, learningRepository } from "@/lib/repository";
-import { recordBookRead, recordQuizScore } from "@/lib/progress";
+import {
+  recordBookRead,
+  recordQuizScore,
+  recordGameCompletion,
+} from "@/lib/progress";
 type Context = AppState & {
   ready: boolean;
   t: (uz: string, ru: string) => string;
@@ -18,6 +22,7 @@ type Context = AppState & {
   toggleNotifications: () => void;
   completeBook: (id: string, reward: number) => void;
   completeQuiz: (id: string, score: number) => void;
+  completeGame: (id: string, reward: number) => void;
   logout: () => void;
 };
 const AppContext = createContext<Context | null>(null);
@@ -72,6 +77,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setState((s) => ({
         ...s,
         progress: recordQuizScore(s.progress, id, score),
+      })),
+    completeGame: (id, reward) =>
+      setState((s) => ({
+        ...s,
+        progress: recordGameCompletion(s.progress, id, reward),
       })),
     logout: () => {
       void learningRepository.clear();

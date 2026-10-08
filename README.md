@@ -29,6 +29,8 @@ Development opens at the URL printed by the server (normally http://127.0.0.1:51
 | /library/[id] | Page-by-page book reader                                     |
 | /quizzes      | Quiz selection                                               |
 | /quizzes/[id] | Five-question player, feedback and results                   |
+| /nature       | Illustrated nature game selection                            |
+| /nature/[id]  | Waste sorting and interactive park cleanup                   |
 | /rewards      | Seven tree stages, daily reading goal and badges             |
 | /profile      | Stats, read books and best quiz results                      |
 | /settings     | Language, demo account, preferences and coming-soon features |
@@ -48,6 +50,10 @@ The root displays the product immediately. Onboarding can be opened from Setting
 All content and authentication are mocked. Profile and progress persist in browser storage on the current device. Every book has original short Uzbek and Russian sample stories. Quiz answers give feedback; book rereads and quiz replays cannot repeatedly farm points. Settings includes all eleven requested coming-soon cards and friendly modals.
 
 Application links use document navigation through `components/app-link.tsx`. This avoids a Vinext production RSC prefetch/navigation failure that prevented clicks from changing pages. Onboarding actions commit profile and preference changes before navigating through `lib/navigation.ts`, so device-local data survives the page load. Verify navigation against the production build, as the failure did not appear in the development server.
+
+The Nature section contains two complete mock games: sort six objects into three bins, or collect eight pieces of litter in a park. Each game awards five points once; replays keep the existing award. Game completion persists with the child's profile and appears in their history. Older saved profiles gain an empty `completedGames` list while retaining their progress. Keyboard and touch controls work without timers or dragging.
+
+Nature artwork: [asset and exact generation prompt](docs/ARTWORK_NATURE.json).
 
 ## Supabase next phase
 

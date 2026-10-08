@@ -18,6 +18,7 @@ export const initialState: AppState = {
     streak: 3,
     completedBooks: ["kindness"],
     quizScores: {},
+    completedGames: [],
     readingDates: demoDates,
   },
   preferences: { language: "uz", notifications: true },
@@ -44,7 +45,18 @@ export const mockRepository: LearningRepository = {
       const raw = localStorage.getItem(KEY);
       if (!raw) return structuredClone(initialState);
       const parsed: unknown = JSON.parse(raw);
-      return isState(parsed) ? parsed : structuredClone(initialState);
+      if (!isState(parsed)) return structuredClone(initialState);
+      return {
+        ...parsed,
+        progress: {
+          ...parsed.progress,
+          completedGames: Array.isArray(parsed.progress.completedGames)
+            ? parsed.progress.completedGames.filter(
+                (id) => typeof id === "string",
+              )
+            : [],
+        },
+      };
     } catch {
       return structuredClone(initialState);
     }

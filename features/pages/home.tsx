@@ -54,15 +54,13 @@ export function HomePage() {
       tag: t("Yutuqlaring shu yerda", "Твои достижения здесь"),
     },
     {
-      title: t("Koinotni tozala", "Уборка в космосе"),
-      desc: t(
-        "Kichik qahramon, katta vazifa",
-        "Маленький герой, большая миссия",
-      ),
-      icon: "rocket",
-      art: "space" as LearningWorld,
+      title: t("Tabiatni tozala", "Береги природу"),
+      desc: t("O‘yna va tabiatga mehr ulash", "Играй и заботься о природе"),
+      icon: "leaf",
+      art: "nature" as LearningWorld,
       color: "lilac",
-      soon: true,
+      href: "/nature",
+      tag: t("2 ta qiziqarli o‘yin", "2 увлекательные игры"),
     },
     {
       title: "Zakovat Battles",

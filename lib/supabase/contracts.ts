@@ -4,6 +4,7 @@ import type {
   ChildProfile,
   ProgressState,
   Language,
+  NatureGameAction,
 } from "@/types";
 export interface ParentSession {
   userId: string;
@@ -42,6 +43,11 @@ export interface ProgressService {
     childId: string,
     quizId: string,
     answers: number[],
+  ): Promise<ProgressState>;
+  completeNatureGame(
+    childId: string,
+    gameId: string,
+    actions: NatureGameAction[],
   ): Promise<ProgressState>;
 }
 /** Future server award logic must derive rewards from catalog data, never trust a client score. */

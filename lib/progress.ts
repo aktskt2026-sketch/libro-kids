@@ -47,3 +47,17 @@ export function recordQuizScore(
     quizScores: { ...progress.quizScores, [id]: Math.max(best, score) },
   };
 }
+
+export function recordGameCompletion(
+  progress: ProgressState,
+  id: string,
+  reward: number,
+): ProgressState {
+  const completed = progress.completedGames ?? [];
+  if (completed.includes(id)) return progress;
+  return {
+    ...progress,
+    points: progress.points + reward,
+    completedGames: [...completed, id],
+  };
+}

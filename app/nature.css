@@ -1,0 +1,834 @@
+/* Nature games share the illustrated Libro-Kids palette and tactile buttons. */
+.world-nature {
+  background-image: url("/images/storybook/nature-world.png");
+  background-size: contain;
+  background-position: center;
+}
+.nature-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  padding: 30px 46px;
+  gap: 25px;
+  border: 3px solid #fff;
+  border-radius: 36px;
+  background:
+    radial-gradient(ellipse at 85% 50%, #d4ffdd 0%, transparent 58%),
+    linear-gradient(120deg, #f4ecff, #e7f8f0);
+  box-shadow: 0 15px 35px #714eb80c;
+  overflow: hidden;
+}
+.nature-hero > img {
+  width: 100%;
+  max-height: 290px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 10px #497d5523);
+}
+.nature-label,
+.nature-reward,
+.nature-result-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 850;
+}
+.nature-label {
+  color: #488a64;
+  font-size: 11px;
+  letter-spacing: 1.3px;
+}
+.nature-hero h2 {
+  font-size: clamp(29px, 3.3vw, 44px);
+  line-height: 1.13;
+  font-weight: 1000;
+  margin: 14px 0;
+  letter-spacing: -1.3px;
+  color: #3c116f;
+}
+.nature-hero h2 span {
+  color: #4c9762;
+}
+.nature-hero p {
+  max-width: 410px;
+  line-height: 1.65;
+  font-size: 15px;
+  color: #7b7896;
+  margin-bottom: 20px;
+}
+.nature-reward {
+  font-size: 12px;
+  background: #ffffffb8;
+  color: #7841a6;
+  padding: 10px 14px;
+  border-radius: 14px;
+}
+.nature-reward svg {
+  color: #e3b032;
+  fill: #ffe497;
+}
+.nature-section-heading {
+  margin-top: 35px;
+}
+.nature-game-count {
+  border: 1px solid #e6dbf6;
+  padding: 8px 13px;
+  border-radius: 13px;
+  color: #9a80b2;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.nature-game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.nature-game-card {
+  border: 3px solid #fff;
+  padding: 24px 30px 28px;
+  border-radius: 30px;
+  box-shadow: 0 10px 24px #5f338909;
+  display: flex;
+  flex-direction: column;
+}
+.nature-game-card.lilac {
+  background: linear-gradient(145deg, #f0e4ff, #e8edff);
+}
+.nature-game-card.mint {
+  background: linear-gradient(145deg, #e3f8e8, #dbf2ec);
+}
+.nature-card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  color: #9a80b2;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.4px;
+}
+.nature-card-meta > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.nature-card-meta > span:last-child {
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.nature-card-meta .nature-done {
+  color: #4c966c;
+}
+.nature-card-art {
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.nature-card-art .story-illustration {
+  width: 210px;
+  height: 210px;
+}
+.nature-art-star {
+  font-size: 31px;
+  color: #f8c957;
+  position: absolute;
+  right: 23%;
+  top: 32px;
+  filter: drop-shadow(0 3px 1px #e4a12018);
+}
+.nature-game-card h2 {
+  font-size: 24px;
+  letter-spacing: -0.7px;
+  font-weight: 1000;
+  margin-bottom: 9px;
+}
+.nature-game-card p {
+  color: #8b82a3;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 23px;
+  flex: 1;
+}
+.nature-game-card .primary-button {
+  width: 100%;
+  justify-content: center;
+}
+.mini-bin-row {
+  display: flex;
+  gap: 11px;
+  transform: rotate(-4deg);
+  align-items: center;
+}
+.mini-bin {
+  width: 64px;
+  height: 92px;
+  border-radius: 14px 14px 19px 19px;
+  border-top: 10px solid #ffffff59;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  box-shadow:
+    inset -8px -5px 0 #00000009,
+    0 7px 0 #7555a21c;
+}
+.mini-bin svg {
+  color: #fff;
+  margin-top: 7px;
+}
+.mini-bin.plastic {
+  background: #ae69ef;
+}
+.mini-bin.paper {
+  background: #55b7e7;
+  transform: translateY(-8px) rotate(8deg);
+}
+.mini-bin.organic {
+  background: #6ec794;
+}
+.nature-mascot-note {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 26px 30px;
+  margin-top: 30px;
+  background: #ffffffb3;
+  border: 2px solid #fff;
+  border-radius: 26px;
+}
+.nature-mascot-note > img {
+  width: 95px;
+  height: 108px;
+  object-fit: contain;
+}
+.nature-mascot-note > div {
+  flex: 1;
+}
+.nature-mascot-note h3 {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.nature-mascot-note p {
+  color: #8b82a3;
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 600px;
+}
+.nature-mascot-note .world-illustration {
+  width: 90px;
+  height: 90px;
+}
+.nature-play-card {
+  max-width: 850px;
+  margin: 0 auto;
+  border: 3px solid #fff;
+  background: #ffffffd4;
+  border-radius: 33px;
+  padding: 27px 34px 30px;
+  box-shadow: 0 18px 36px #794ba10c;
+}
+.nature-play-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 15px;
+}
+.nature-play-top > span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.8px;
+  color: #9b86b1;
+}
+.nature-play-top strong {
+  white-space: nowrap;
+  color: #7a57a1;
+  font-size: 12px;
+}
+.sorting-item {
+  max-width: 350px;
+  margin: 20px auto 32px;
+  text-align: center;
+  padding: 19px 25px 22px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  position: relative;
+  background: radial-gradient(ellipse at top, #f1e5ff, #f9f7ff);
+}
+.sorting-item.sorted {
+  background: linear-gradient(145deg, #edfbf0, #f6fff8);
+}
+.sorting-item-number {
+  display: block;
+  color: #b19ac5;
+  font-size: 12px;
+  font-weight: 800;
+}
+.sorting-item-emoji {
+  font-size: 77px;
+  line-height: 1.3;
+  display: block;
+  margin: 6px 0;
+  filter: drop-shadow(0 8px 5px #6c45871d);
+}
+.sorting-item h2 {
+  font-size: 23px;
+  font-weight: 950;
+}
+.sorting-item p {
+  color: #9d89b0;
+  font-size: 13px;
+  margin-top: 6px;
+}
+.sorting-check {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #70c997;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.waste-bin-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+.waste-bin {
+  position: relative;
+  border: 2px solid #fff;
+  border-radius: 18px 18px 24px 24px;
+  padding: 20px 10px 16px;
+  color: #fff;
+  box-shadow:
+    inset -8px -6px 0 #00000006,
+    0 6px 0 #76549020;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+  text-align: center;
+  cursor: pointer;
+}
+.waste-bin.plastic {
+  background: linear-gradient(120deg, #ae73eb, #9452d5);
+}
+.waste-bin.paper {
+  background: linear-gradient(120deg, #7bbce5, #599edc);
+}
+.waste-bin.organic {
+  background: linear-gradient(120deg, #79c88e, #4dae79);
+}
+.waste-bin-lid {
+  position: absolute;
+  left: -5px;
+  right: -5px;
+  height: 12px;
+  top: -5px;
+  background: #ffffff63;
+  border: 2px solid #fff;
+  border-radius: 9px;
+}
+.waste-bin-symbol {
+  font-size: 35px;
+  line-height: 1.3;
+  display: block;
+  margin-bottom: 8px;
+}
+.waste-bin strong {
+  font-size: 18px;
+  display: block;
+  font-weight: 950;
+}
+.waste-bin small {
+  font-size: 10px;
+  line-height: 1.5;
+  display: block;
+  opacity: 0.86;
+  margin-top: 4px;
+}
+.waste-bin:hover:not(:disabled) {
+  transform: translateY(-4px);
+}
+.waste-bin:focus-visible,
+.garden-litter:focus-visible,
+.nature-replay:focus-visible {
+  outline: 3px solid #6b23bc;
+  outline-offset: 5px;
+}
+.waste-bin:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+.waste-bin.chosen {
+  opacity: 1;
+  box-shadow:
+    0 0 0 4px #a1dfb6,
+    0 7px 0 #76549020;
+}
+.waste-bin.try-again {
+  box-shadow:
+    0 0 0 3px #edc994,
+    0 6px 0 #76549020;
+}
+.nature-feedback {
+  margin: 26px 0 20px;
+  padding: 14px 17px;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 15px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #9b82ae;
+  background: #f7f2ff;
+  text-align: center;
+}
+.nature-feedback svg {
+  flex-shrink: 0;
+}
+.nature-feedback.correct {
+  color: #4f9067;
+  background: #eef9ed;
+}
+.nature-feedback.retry {
+  color: #ae894c;
+  background: #fff8e7;
+}
+.nature-next {
+  display: flex;
+  margin-left: auto;
+}
+.nature-next:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.nature-gentle-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #a392b5;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+  margin-top: 22px;
+}
+.garden-instructions {
+  text-align: center;
+  padding: 20px 0 23px;
+}
+.garden-instructions strong {
+  font-size: 20px;
+  font-weight: 950;
+}
+.garden-instructions p {
+  margin-top: 7px;
+  color: #a090b3;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.garden-board {
+  position: relative;
+  overflow: hidden;
+  height: 405px;
+  border: 3px solid #fff;
+  border-radius: 27px;
+  background: linear-gradient(
+    #d8f3fd 0%,
+    #e9f9fc 35%,
+    #bce5a5 35%,
+    #7cc380 100%
+  );
+  isolation: isolate;
+  box-shadow: inset 0 0 40px #87c58226;
+}
+.garden-board::before {
+  content: "";
+  position: absolute;
+  left: -30%;
+  width: 160%;
+  height: 65%;
+  top: 28%;
+  background: #afdb96;
+  border-radius: 50%;
+  z-index: -1;
+}
+.garden-board::after {
+  content: "";
+  position: absolute;
+  height: 27%;
+  width: 150%;
+  bottom: -16%;
+  left: -20%;
+  border-radius: 50%;
+  background: #5baf75;
+  z-index: -1;
+}
+.garden-scenery {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.garden-sun {
+  position: absolute;
+  font-size: 42px;
+  top: 5%;
+  left: 12%;
+}
+.garden-cloud {
+  position: absolute;
+  font-size: 68px;
+  top: 1%;
+  left: 48%;
+  opacity: 0.95;
+}
+.garden-tree {
+  position: absolute;
+  font-size: 112px;
+  line-height: 1;
+  top: 10%;
+  filter: drop-shadow(0 8px 3px #3b855927);
+}
+.garden-tree-one {
+  left: -2%;
+  transform: rotate(-4deg);
+}
+.garden-tree-two {
+  right: 5%;
+  top: 7%;
+  font-size: 130px;
+}
+.garden-pond {
+  position: absolute;
+  width: 31%;
+  height: 17%;
+  bottom: 6%;
+  right: 3%;
+  border-radius: 50%;
+  background: linear-gradient(#67c9e6, #8adcfa);
+  border: 7px solid #8abd80;
+  box-shadow: inset 0 5px 0 #ffffff35;
+  transform: rotate(-8deg);
+}
+.garden-flowers {
+  position: absolute;
+  bottom: 3%;
+  left: 5%;
+  font-size: 32px;
+  letter-spacing: 8px;
+}
+.garden-butterfly {
+  position: absolute;
+  top: 24%;
+  left: 32%;
+  font-size: 31px;
+  transform: rotate(-10deg);
+}
+.garden-litter {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  width: 60px;
+  height: 60px;
+  border: 2px solid #ffffff82;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: #ffffff77;
+  font-size: 35px;
+  box-shadow: 0 5px 0 #4e886725;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.garden-litter:nth-child(even) {
+  transform: translate(-50%, -50%) rotate(8deg);
+}
+.garden-litter:hover:not(:disabled) {
+  transform: translate(-50%, -55%) scale(1.08);
+}
+.garden-litter.is-collected {
+  opacity: 0.7;
+  background: #ffffff40;
+  border-color: transparent;
+  box-shadow: none;
+  color: #3b9767;
+  cursor: default;
+}
+.garden-feedback {
+  margin-bottom: 0;
+}
+.nature-result {
+  max-width: 760px;
+  margin: 0 auto;
+  border-radius: 35px;
+  border: 3px solid #fff;
+  background: radial-gradient(ellipse at top, #ddf7e6, #fffdff 62%);
+  text-align: center;
+  padding: 26px 40px 35px;
+  position: relative;
+}
+.nature-result > img {
+  width: 195px;
+  height: 195px;
+  object-fit: contain;
+  margin: 0 auto 7px;
+  display: block;
+}
+.nature-result-confetti {
+  position: absolute;
+  top: 45px;
+  left: 9%;
+  right: 9%;
+  word-spacing: 65px;
+  font-size: 27px;
+  color: #edc667;
+  pointer-events: none;
+}
+.nature-result-label {
+  font-size: 10px;
+  color: #6caf86;
+  letter-spacing: 1px;
+}
+.nature-result h2 {
+  font-size: 31px;
+  font-weight: 1000;
+  letter-spacing: -0.9px;
+  margin: 13px 0;
+}
+.nature-result > p {
+  color: #8b80a0;
+  max-width: 510px;
+  margin: 0 auto 19px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.nature-earned {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 20px;
+  border-radius: 17px;
+  background: #fff1c4;
+  color: #b79134;
+  font-size: 21px;
+  font-weight: 950;
+}
+.nature-earned svg {
+  fill: #f8d469;
+}
+.nature-result > small {
+  display: block;
+  margin: 12px auto 23px;
+  max-width: 430px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #a695b4;
+}
+.nature-result-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.nature-replay {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px;
+  border: 2px solid #eee3fb;
+  color: #976bbd;
+  font-size: 13px;
+  font-weight: 850;
+  border-radius: 22px;
+  background: #fcf9ff;
+  cursor: pointer;
+}
+.nature-profile-history {
+  margin-top: 25px;
+}
+@media (max-width: 700px) {
+  .nature-hero {
+    padding: 23px;
+    border-radius: 27px;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .nature-hero h2 {
+    font-size: 32px;
+  }
+  .nature-hero p {
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .nature-hero > img {
+    height: 190px;
+    grid-row: 1;
+  }
+  .nature-reward {
+    font-size: 10px;
+  }
+  .nature-game-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .nature-game-card {
+    padding: 20px 24px 23px;
+    border-radius: 26px;
+  }
+  .nature-card-art {
+    height: 155px;
+  }
+  .nature-section-heading h2 {
+    font-size: 19px;
+  }
+  .nature-game-count {
+    display: none;
+  }
+  .nature-mascot-note {
+    padding: 20px;
+    gap: 15px;
+  }
+  .nature-mascot-note > img {
+    width: 70px;
+    height: 100px;
+  }
+  .nature-mascot-note h3 {
+    font-size: 17px;
+  }
+  .nature-mascot-note p {
+    font-size: 12px;
+  }
+  .nature-mascot-note .world-illustration {
+    display: none;
+  }
+  .nature-play-card {
+    padding: 20px 15px 22px;
+    border-radius: 26px;
+  }
+  .nature-play-top {
+    gap: 8px;
+  }
+  .nature-play-top > span {
+    font-size: 8px;
+    letter-spacing: 0.2px;
+    gap: 5px;
+  }
+  .nature-play-top strong {
+    font-size: 11px;
+  }
+  .sorting-item {
+    margin: 17px auto 25px;
+    padding: 14px 20px 17px;
+  }
+  .sorting-item-emoji {
+    font-size: 65px;
+  }
+  .sorting-item h2 {
+    font-size: 21px;
+  }
+  .waste-bin-row {
+    gap: 10px;
+  }
+  .waste-bin {
+    padding: 15px 5px 12px;
+    border-radius: 15px 15px 18px 18px;
+  }
+  .waste-bin strong {
+    font-size: 14px;
+  }
+  .waste-bin-symbol {
+    font-size: 29px;
+  }
+  .waste-bin small {
+    font-size: 8px;
+  }
+  .nature-feedback {
+    padding: 12px;
+    font-size: 11px;
+    margin-top: 21px;
+  }
+  .nature-next {
+    width: 100%;
+    justify-content: center;
+  }
+  .garden-instructions strong {
+    font-size: 17px;
+  }
+  .garden-instructions p {
+    font-size: 12px;
+  }
+  .garden-board {
+    height: 360px;
+    border-radius: 22px;
+  }
+  .garden-tree {
+    font-size: 80px;
+  }
+  .garden-tree-two {
+    font-size: 96px;
+    right: -3%;
+  }
+  .garden-cloud {
+    font-size: 50px;
+  }
+  .garden-sun {
+    font-size: 32px;
+  }
+  .garden-litter {
+    width: 49px;
+    height: 49px;
+    font-size: 29px;
+    border-radius: 13px;
+  }
+  .garden-flowers {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
+  .nature-result {
+    padding: 22px 20px 28px;
+    border-radius: 28px;
+  }
+  .nature-result > img {
+    width: 165px;
+    height: 165px;
+  }
+  .nature-result h2 {
+    font-size: 26px;
+  }
+  .nature-result > p {
+    font-size: 13px;
+  }
+  .nature-result-confetti {
+    word-spacing: 24px;
+    font-size: 22px;
+  }
+  .nature-result-actions {
+    flex-direction: column;
+  }
+  .nature-result-actions .primary-button {
+    justify-content: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .garden-litter,
+  .waste-bin {
+    transition: none;
+  }
+}

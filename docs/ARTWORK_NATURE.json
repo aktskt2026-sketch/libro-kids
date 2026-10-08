@@ -1,0 +1,7 @@
+{
+  "generation_method": "Built-in image_gen.imagegen, one call, transparent background.",
+  "asset": "public/images/storybook/nature-world.png",
+  "reference_role": "User screenshot guides the glossy rounded children's card style; newly generated nature scene.",
+  "prompt": "Use case: illustration-story. Asset type: transparent cutout illustration for the Libro-Kids children's educational website nature-game card. Primary request: a cheerful tiny green park on a floating rounded grassy island, with one lush leafy tree, a small blue pond, flowers, and two rounded recycling bins in purple and turquoise; a friendly little globe with a smiling face sits beside the tree. Polished playful 3D storybook illustration, glossy clay-like material, pillowy round shapes, delicate rim lighting, magical yellow stars. Match the site's existing purple storybook mood, bright mint green, lavender, turquoise and soft gold. Compact centered square composition, generous clear margin, all objects in one cohesive scene. Genuine transparent background with clean alpha; no background rectangle, no text, no lettering, no logos, no children, no rocket, no watermark. The artwork must read clearly at 160 px wide.",
+  "inspection": "Visually inspected: green park, smiling globe, tree, purple/turquoise bins, pond, golden stars, no text; transparent cutout."
+}

@@ -14,11 +14,11 @@ The UI runs entirely on local mock data. No Supabase client, account, database, 
 
 1. Install `@supabase/supabase-js` and `@supabase/ssr` when backend work is authorized.
 2. Create a Supabase project; copy public config into `.env.local`. Use a browser publishable key, following [Supabase API-key documentation](https://supabase.com/docs/guides/getting-started/api-keys).
-3. Create parent-owned child profiles, localized books and book pages, quizzes and question records, read completions, quiz attempts, preferences, and an append-only reward ledger. Use UUID record IDs; preserve mock slugs for routing.
+3. Create parent-owned child profiles, localized books and book pages, quizzes and question records, read completions, quiz attempts, nature-game completions, preferences, and an append-only reward ledger. Use UUID record IDs; preserve mock slugs for routing.
 4. Enable row-level security before exposing tables. Authenticated parents can manage only their children's profiles, preferences and progress; catalog content can be readable by the intended audience.
 5. Implement parent auth with server-aware sessions. Children use parent-owned profiles rather than separate email accounts. Replace the visibly labeled demo forms with real validation, recovery and confirmation flows.
 6. Implement the service contracts and replace `learningRepository` with the Supabase adapter. Fetch content through `ContentService` and pass domain objects to the existing card, reader and quiz components.
-7. Award points through a server transaction or database function: one reward per completed book, only score improvement for quiz replays. Derive score from stored question answers; validate ownership and book/quiz IDs. Use a uniqueness constraint for reward-event idempotency.
+7. Award points through a server transaction or database function: one reward per completed book, only score improvement for quiz replays, and one five-point reward per completed nature game. Derive score from stored question answers; validate ownership and book/quiz/game IDs. For nature games, validate the action list against the game catalog before recording completion. Use a uniqueness constraint for reward-event idempotency.
 8. Add loading and failure recovery for remote operations, then test ownership isolation and concurrent award requests.
 9. Replace locally computed streaks with calendar-day reading events in the child's selected timezone.
 

@@ -13,6 +13,7 @@ export interface ProgressState {
   streak: number;
   completedBooks: string[];
   quizScores: Record<string, number>;
+  completedGames: string[];
   readingDates: string[];
 }
 export interface AppState {
@@ -50,3 +51,17 @@ export interface Quiz {
   icon: string;
   questions: Question[];
 }
+export interface NatureGame {
+  id: "sort" | "garden";
+  title: Localized;
+  description: Localized;
+  color: string;
+  reward: number;
+}
+export type NatureGameAction =
+  | { itemId: string; action: "collect" }
+  | {
+      itemId: string;
+      action: "sort";
+      category: "plastic" | "paper" | "organic";
+    };

@@ -1,5 +1,5 @@
 export type LearningWorld =
-  "books" | "quiz" | "tree" | "space" | "battle" | "shop";
+  "books" | "quiz" | "tree" | "space" | "battle" | "shop" | "nature";
 
 export function WorldIllustration({
   world,
