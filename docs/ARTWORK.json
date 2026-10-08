@@ -1,0 +1,18 @@
+{
+  "generation_method": "Built-in image_gen.imagegen; exactly one call per asset; three calls in a parallel Promise.allSettled batch; transparent_background: true; no variants, retries, or edits.",
+  "assets": [
+    {
+      "path": "C:\\Users\\intel\\Documents\\ChatGPT\\bibiljon\\asset-output\\bilbiljon.png",
+      "prompt": "Use case: stylized-concept\nAsset type: children's learning website mascot, displayed at 300–400px height\nPrimary request: Bilbiljon, a friendly Uzbek boy mascot aged about 7, expressive warm smile, brown eyes, black hair, green embroidered Uzbek doppa, yellow/orange hoodie with teal trim, navy trousers, turquoise sneakers. He holds an open colorful blue book with one hand and waves with the other.\nStyle/medium: cute polished soft 3D clay children's learning-app illustration, rounded forms, softly tactile clay material.\nComposition/framing: full body front three-quarter view, centered, entirely visible with comfortable clear margins.\nLighting/mood: soft studio light, cheerful and welcoming.\nScene/backdrop: isolated on a genuinely transparent background.\nConstraints: no text, no letters, no watermark, no extra characters, preserve transparent alpha."
+    },
+    {
+      "path": "C:\\Users\\intel\\Documents\\ChatGPT\\bibiljon\\asset-output\\bobojon.png",
+      "prompt": "Use case: stylized-concept\nAsset type: children's learning website mentor avatar, displayed around 100px\nPrimary request: Bobojon, a friendly elderly Uzbek mentor with warm smile and white beard, green embroidered Uzbek doppa, teal vest over cream clothing, holding a small book.\nStyle/medium: cute polished soft 3D clay children's learning-app illustration, rounded forms, softly tactile clay material; matching yellow, teal, green, navy storybook mascot palette.\nComposition/framing: centered bust portrait, head, shoulders and small book fully visible, comfortable clear margins.\nLighting/mood: soft studio light, kindly and reassuring.\nScene/backdrop: isolated on a genuinely transparent background.\nConstraints: no text, no letters, no watermark, no extra characters, preserve transparent alpha."
+    },
+    {
+      "path": "C:\\Users\\intel\\Documents\\ChatGPT\\bibiljon\\asset-output\\knowledge-tree.png",
+      "prompt": "Use case: stylized-concept\nAsset type: children's learning website reward and reading journey card illustration, displayed at 260px\nPrimary request: a small magical knowledge tree: lush mint and emerald rounded tree with warm yellow fruit and tiny stars, teal trunk, growing on a small round green grassy island with two books and flowers.\nStyle/medium: cute polished soft 3D clay children's learning-app illustration, rounded forms, softly tactile clay material; matching yellow, teal, green, navy storybook mascot palette.\nComposition/framing: centered small tree and entire grassy island visible, three-quarter view, comfortable clear margins.\nLighting/mood: soft studio light, cheerful, magical and inviting.\nScene/backdrop: isolated on a genuinely transparent background.\nConstraints: exactly two books, no text, no letters, no watermark, no characters, preserve transparent alpha."
+    }
+  ],
+  "inspection": "Each local image inspected with view_image. All PNGs have Format32bppArgb and zero alpha at sampled corners and left edge. Bilbiljon is full body, waves and holds blue book. Bobojon bust and knowledge tree match palette; tree contains two books. No text."
+}

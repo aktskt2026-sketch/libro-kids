@@ -1,0 +1,62 @@
+# Libro-Kids
+
+A responsive Uzbek-first children's reading and learning app, with Russian localization. Built with React 19, TypeScript, Tailwind CSS 4, and file routing through the Vinext/Next app router.
+
+## Run
+
+Requires Node.js 22.13 or newer and npm.
+
+```sh
+npm run install:ci
+npm run dev
+npm run typecheck
+npm test
+npm run build
+```
+
+Development opens at the URL printed by the server (normally http://127.0.0.1:5173).
+
+## Routes
+
+| Route         | Screen                                                       |
+| ------------- | ------------------------------------------------------------ |
+| / and /home   | Home with demo child profile                                 |
+| /welcome      | Splash and Bilbiljon welcome                                 |
+| /language     | Uzbek / Russian selection                                    |
+| /account      | Demo parent registration / login                             |
+| /child-setup  | Child setup; ?edit=1 edits existing profile                  |
+| /library      | Search, age and category filters                             |
+| /library/[id] | Page-by-page book reader                                     |
+| /quizzes      | Quiz selection                                               |
+| /quizzes/[id] | Five-question player, feedback and results                   |
+| /rewards      | Seven tree stages, daily reading goal and badges             |
+| /profile      | Stats, read books and best quiz results                      |
+| /settings     | Language, demo account, preferences and coming-soon features |
+
+The root displays the product immediately. Onboarding can be opened from Settings → Bilbiljon bilan tanishuv.
+
+## Architecture
+
+- `app/`: route entries, metadata and shared design tokens.
+- `features/pages/`: page components. This avoids conflicting with Next's reserved root `pages/` router.
+- `components/` and `layouts/`: reusable app UI, onboarding shell and accessible primitives.
+- `data/`: local books, quizzes, wisdom, rewards and coming-soon arrays.
+- `hooks/`: app state and optional browser tools.
+- `lib/`: storage adapter, deterministic award rules and future integration boundaries.
+- `types/`: shared domain models.
+
+All content and authentication are mocked. Profile and progress persist in browser storage on the current device. Every book has original short Uzbek and Russian sample stories. Quiz answers give feedback; book rereads and quiz replays cannot repeatedly farm points. Settings includes all eleven requested coming-soon cards and friendly modals.
+
+## Supabase next phase
+
+Read [the integration guide](docs/SUPABASE_INTEGRATION.md). Public configuration placeholders and async service contracts are prepared; no backend connection or SDK is active.
+
+## Artwork and references
+
+Bilbiljon, Bobojon and the knowledge tree were created with built-in image generation. Exact prompts and method: [asset manifest](docs/ARTWORK.json). The UI follows the supplied text brief; no screenshot attachments were available.
+
+The historical quiz content was checked against [Samarqand regional administration](https://samarkand.uz/press/news/bugun-amir-temur-1336-1405-tavallud-topgan-kun2514) and [Youth Affairs Agency](https://gov.uz/oz/yoshlar/news/view/128016). These links also appear on quiz pages.
+
+## Verification
+
+`npm run typecheck` verifies all source types. `npm test` covers point idempotency, best-score awards, reading dates and streak resets. Browser checks cover routing, filters, book and quiz completion, profile editing, language switching, modals and responsive layouts. No real accounts or network databases are involved.
