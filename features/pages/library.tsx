@@ -31,8 +31,8 @@ export function LibraryPage() {
           "Библиотека маленького читателя",
         )}
         description={t(
-          "Ertaklar, kashfiyotlar va unutilmas sarguzashtlar seni kutmoqda.",
-          "Тебя ждут сказки, открытия и незабываемые приключения.",
+          "Ertaklar, kitoblar va multfilmlar seni kutmoqda.",
+          "Тебя ждут сказки, книги и мультфильмы.",
         )}
       />
       <section className="library-controls">
@@ -101,7 +101,7 @@ export function LibraryPage() {
             : t("Sening yangi sarguzashting", "Твоё новое приключение")}
         </h2>
         <span aria-live="polite">
-          {filtered.length} {t("ta kitob", "книг")}
+          {filtered.length} {t("ta ertak va kitob", "историй")}
         </span>
       </div>
       {filtered.length ? (

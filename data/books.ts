@@ -17,6 +17,33 @@ export const categoryNames: Record<Category, Localized> = {
 };
 export const books: Book[] = [
   {
+    id: "maymoqvoyning-xazinasi",
+    title: l("Maymoqvoyning xazinasi", "Сокровище Маймоквоя"),
+    category: "Ertaklar",
+    age: "6–7",
+    reward: 0,
+    minutes: 1,
+    icon: "book",
+    color: "peach",
+    subtitle: l(
+      "Ertakni multfilmda tomosha qilamiz",
+      "Смотрим сказку в мультфильме",
+    ),
+    pages: [],
+    coverImage: "/images/cartoons/maymoqvoyning-xazinasi-1.jpg",
+    cartoons: [
+      {
+        id: "maymoqvoy-1",
+        number: 1,
+        title: l("1-qism", "1-я серия"),
+        source: "/videos/maymoqvoyning-xazinasi-1.mp4",
+        poster: "/images/cartoons/maymoqvoyning-xazinasi-1.jpg",
+        durationSeconds: 48.066,
+        language: "uz",
+      },
+    ],
+  },
+  {
     id: "moon-rabbit",
     title: l("Oyga oshiq quyoncha", "Зайчонок и Луна"),
     category: "Ertaklar",

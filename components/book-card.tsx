@@ -1,6 +1,6 @@
 "use client";
 import Link from "@/components/app-link";
-import { Check, Clock, Star, ArrowRight } from "lucide-react";
+import { Check, Clock, Star, ArrowRight, Film } from "lucide-react";
 import { useApp } from "@/hooks/use-app";
 import { StoryIllustration } from "@/components/world-illustration";
 import { categoryNames } from "@/data/books";
@@ -8,6 +8,8 @@ import type { Book } from "@/types";
 export function BookCard({ book }: { book: Book }) {
   const { preferences, progress, t } = useApp();
   const done = progress.completedBooks.includes(book.id);
+  const hasCartoon = !!book.cartoons?.length;
+  const cartoonOnly = hasCartoon && book.pages.length === 0;
   return (
     <article className="book-card">
       <Link
@@ -18,7 +20,11 @@ export function BookCard({ book }: { book: Book }) {
         <span className="cover-meta">
           LIBRO-KIDS · {categoryNames[book.category][preferences.language]}
         </span>
-        <StoryIllustration bookId={book.id} />
+        {book.coverImage ? (
+          <img className="book-film-cover" src={book.coverImage} alt="" />
+        ) : (
+          <StoryIllustration bookId={book.id} />
+        )}
         <strong>{book.title[preferences.language]}</strong>
         <span className="cover-subtitle">
           {book.subtitle[preferences.language]}
@@ -27,6 +33,12 @@ export function BookCard({ book }: { book: Book }) {
           <span className="read-badge">
             <Check size={13} />
             {t("O‘qilgan", "Прочитано")}
+          </span>
+        )}
+        {hasCartoon && (
+          <span className="cartoon-cover-badge">
+            <Film size={14} />
+            {t("Multfilm", "Мультфильм")}
           </span>
         )}
       </Link>
@@ -40,14 +52,23 @@ export function BookCard({ book }: { book: Book }) {
             <Clock size={14} />
             {book.minutes} {t("daq", "мин")}
           </span>
-          <span className="book-reward">
-            <Star size={14} />+{book.reward} {t("ball", "баллов")}
-          </span>
+          {cartoonOnly ? (
+            <span className="book-cartoon-count">
+              <Film size={14} />
+              {book.cartoons!.length} {t("qism", "серия")}
+            </span>
+          ) : (
+            <span className="book-reward">
+              <Star size={14} />+{book.reward} {t("ball", "баллов")}
+            </span>
+          )}
         </div>
         <Link href={"/library/" + book.id} className="read-button">
-          {done
-            ? t("Yana o‘qish", "Прочитать ещё")
-            : t("O‘qishni boshlash", "Начать читать")}
+          {cartoonOnly
+            ? t("Tomosha qilish", "Смотреть")
+            : done
+              ? t("Yana o‘qish", "Прочитать ещё")
+              : t("O‘qishni boshlash", "Начать читать")}
           <ArrowRight size={16} />
         </Link>
       </div>

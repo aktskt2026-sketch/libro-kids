@@ -30,7 +30,7 @@ Development opens at the URL printed by the server (normally http://127.0.0.1:51
 | /account/ready   | Child-profile completion screen                              |
 | /child-setup     | Child setup; ?edit=1 edits existing profile                  |
 | /library         | Search, age and category filters                             |
-| /library/[id]    | Page-by-page book reader                                     |
+| /library/[id]    | Book reader and story-specific cartoon tabs                  |
 | /quizzes         | Quiz selection                                               |
 | /quizzes/[id]    | Five-question player, feedback and results                   |
 | /nature          | Illustrated nature game selection                            |
@@ -56,7 +56,13 @@ Registration is accessible from the home header, family banner and Settings. The
 
 Point criteria are available at `/points`, from Home and Rewards. A new book earns five points; the first completed book each calendar day earns a separate three-point bonus, including rereads. The home wisdom lesson rotates daily and awards two points once per day. Every correct quiz answer is worth two points; only improvement over the previous best is added on replay. Each nature game earns five profile points once. These values share `data/point-rules.ts`. Daily claims persist across reloads, and older saved reading dates are preserved without retroactive points.
 
-All content and authentication are mocked. Profile and progress persist in browser storage on the current device. Every book has original short Uzbek and Russian sample stories. Quiz answers give feedback; book rereads and quiz replays cannot repeatedly farm points. Settings includes all eleven requested coming-soon cards and friendly modals.
+Catalog, learning data and authentication are mocked. Profile and progress persist in browser storage on the current device. Existing text books have original short Uzbek and Russian sample stories. Quiz answers give feedback; book rereads and quiz replays cannot repeatedly farm points. Settings includes all eleven requested coming-soon cards and friendly modals.
+
+## Fairy-tale cartoons
+
+`/library/maymoqvoyning-xazinasi` contains the user's supplied Uzbek cartoon, currently one 48-second episode. It appears first in the library with its actual video-frame cover and a "Tomosha qilish" action. The story page has accessible Reading / Cartoon tabs; this video-only story opens the cartoon tab, and the reading tab explains that no text has been supplied. No story text or unavailable extra episodes are invented. Watching does not claim book points or fulfil a reading goal.
+
+`Book.cartoons` holds ordered episode metadata (source, poster, duration, audio language), so additional supplied episodes can be added to the same story without changing the player. Native video controls support play, pause, seeking, volume and fullscreen with inline playback on mobile; the supplied portrait framing is preserved. Media loads only when its story is opened, playback requires a user action, and load failures offer retry. The original file in Downloads is untouched; the site's optimized H.264/AAC copy and extracted frame poster are static assets, with no backend or upload service.
 
 Application links use document navigation through `components/app-link.tsx`. This avoids a Vinext production RSC prefetch/navigation failure that prevented clicks from changing pages. Onboarding actions commit profile and preference changes before navigating through `lib/navigation.ts`, so device-local data survives the page load. Verify navigation against the production build, as the failure did not appear in the development server.
 

@@ -2,6 +2,8 @@
 
 The UI runs entirely on local mock data. No Supabase client, account, database, migration, or network integration is enabled.
 
+Cartoon metadata is already represented by `Book.cartoons` (`CartoonEpisode`: id, episode number, localized title, source URL, poster URL, duration, audio language). The current cartoon is a user-supplied static video, not a backend upload. A future content adapter can return ordered episodes with each book through `ContentService.getBook`; move media into the chosen storage service and replace URLs there without rewriting the player. Empty story pages mean no reading completion is available, and video playback never awards reading points. No video progress persistence or watching reward is enabled.
+
 ## Boundaries already prepared
 
 - `types/index.ts`: domain types for books, quizzes, child profiles, preferences and progress.

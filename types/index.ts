@@ -39,6 +39,17 @@ export interface Book {
   color: string;
   subtitle: Localized;
   pages: Localized[];
+  coverImage?: string;
+  cartoons?: CartoonEpisode[];
+}
+export interface CartoonEpisode {
+  id: string;
+  number: number;
+  title: Localized;
+  source: string;
+  poster: string;
+  durationSeconds: number;
+  language: Language;
 }
 export interface Question {
   question: Localized;

@@ -14,11 +14,10 @@ import { books, categoryNames } from "@/data/books";
 import { StoryIllustration } from "@/components/world-illustration";
 import { POINT_REWARDS } from "@/data/point-rules";
 import { dateKey } from "@/lib/progress";
+import { StoryMedia } from "@/components/story-media";
+import type { Book } from "@/types";
 export function ReaderPage({ bookId }: { bookId: string }) {
-  const { preferences, progress, completeBook, ready, t } = useApp();
-  const [page, setPage] = useState(0),
-    [finished, setFinished] = useState(false);
-  const [earned, setEarned] = useState({ book: 0, daily: 0 });
+  const { preferences, t } = useApp();
   const book = books.find((b) => b.id === bookId);
   if (!book)
     return (
@@ -29,9 +28,40 @@ export function ReaderPage({ bookId }: { bookId: string }) {
         </PrimaryButton>
       </AppShell>
     );
+  return (
+    <AppShell>
+      <div className={book.cartoons?.length ? "story-film-page" : undefined}>
+        <PageHeading
+          back="/library"
+          eyebrow={
+            categoryNames[book.category][preferences.language] +
+            " · " +
+            book.age +
+            " " +
+            t("yosh", "лет")
+          }
+          title={book.title[preferences.language]}
+        />
+        {book.cartoons?.length ? (
+          <StoryMedia book={book}>
+            {book.pages.length > 0 ? <ReadingContent book={book} /> : null}
+          </StoryMedia>
+        ) : (
+          <ReadingContent book={book} />
+        )}
+      </div>
+    </AppShell>
+  );
+}
+
+function ReadingContent({ book }: { book: Book }) {
+  const { preferences, progress, completeBook, ready, t } = useApp();
+  const [page, setPage] = useState(0),
+    [finished, setFinished] = useState(false);
+  const [earned, setEarned] = useState({ book: 0, daily: 0 });
   const completed = progress.completedBooks.includes(book.id);
   function finish() {
-    if (book && ready) {
+    if (ready && book.pages.length > 0) {
       const goalDone = progress.dailyGoalDates.includes(dateKey(new Date()));
       setEarned({
         book: completed ? 0 : book.reward,
@@ -42,18 +72,7 @@ export function ReaderPage({ bookId }: { bookId: string }) {
     }
   }
   return (
-    <AppShell>
-      <PageHeading
-        back="/library"
-        eyebrow={
-          categoryNames[book.category][preferences.language] +
-          " · " +
-          book.age +
-          " " +
-          t("yosh", "лет")
-        }
-        title={book.title[preferences.language]}
-      />
+    <>
       {finished ? (
         <section className="result-card">
           <span className="result-trophy">
@@ -140,6 +159,6 @@ export function ReaderPage({ bookId }: { bookId: string }) {
           "Не спеши. Наслаждайся каждой страницей!",
         )}
       </div>
-    </AppShell>
+    </>
   );
 }
